@@ -1,0 +1,86 @@
+@font-face {
+  font-family: 'pixelmplus12regular';
+  src: url('/fonts/PixelMplus12-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.LogoContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: fit-content;
+  height: fit-content;
+
+  bottom: 100px;
+  left: 380px;
+
+  gap: 4px;
+
+  user-select: none;
+
+  img:nth-child(3) {
+    margin-top: -170px;
+  }
+}
+
+.PrescriptButton {
+  position: absolute;
+  margin-bottom: 200px;
+  cursor: pointer;
+
+  transition: filter ease 0.5s;
+  user-select: none;
+}
+
+.PrescriptButton:hover {
+  filter: brightness(1.2);
+}
+
+.GlobalContainer {
+  display: flex;
+  flex-shrink: 0;
+  position: relative;
+  margin-top: 500px; 
+  width: 1000px;
+  height: 500px;
+  bottom: 200px;
+}
+
+.PrescriptContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  flex-direction: row;
+  right: 120px;
+  top: 150px;
+  width: 1000px;
+  height: 200px;
+  color: white;
+  font-family: pixelmplus12regular;
+  font-size: 23px;
+  text-shadow: 0 0 0.2px #fff, 0 0 12px #4269b8, 0 0 50px #4269b8;
+
+  overflow: hidden;
+  white-space: normal;
+  overflow-wrap: break-word;
+  flex-wrap: wrap;
+}
+
+.Prescript {
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
