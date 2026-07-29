@@ -23,6 +23,9 @@ jobs:
       - name: Enable Corepack
         run: corepack enable
 
+      - name: Install pnpm
+        run: corepack install
+
       - run: pnpm install
 
       - run: pnpm release
