@@ -1,0 +1,9 @@
+pnpm dlx lint-staged
+
+pnpm typecheck
+pnpm lint
+pnpm build
+
+rm -rf apps/frontend/dist
+
+echo "✅ All checks passed."
