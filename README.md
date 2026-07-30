@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="/frontend/public/favicon.png"/>
+  <img src="/apps/frontend/public/assets/IndexEmblem.png"/>
   <h1>The will of the City— now on your browser</h1>
   <h3> Prescript.daily </h3>
   <br>
