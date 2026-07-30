@@ -1,0 +1,48 @@
+{
+  "extends": ["config:recommended"],
+
+  "enabledManagers": ["pnpm"],
+
+  "schedule": ["every day"],
+
+  "targetBranch": "dev",
+
+  "prConcurrentLimit": 5,
+
+  "assignees": ["LifelagCheats"],
+
+  "reviewers": ["LifelagCheats"],
+
+  "rangeStrategy": "replace",
+
+  "packageRules": [
+    {
+      "description": "Group all development tooling updates",
+      "groupName": "development tooling",
+      "matchDepTypes": ["devDependencies"]
+    },
+
+    {
+      "description": "Group frontend application updates",
+      "groupName": "frontend dependencies",
+      "matchFileNames": ["apps/frontend/package.json"]
+    },
+
+    {
+      "description": "Do not automatically merge major updates",
+      "matchUpdateTypes": ["major"],
+      "automerge": false
+    },
+
+    {
+      "description": "Automatically merge safe patch updates",
+      "matchUpdateTypes": ["patch"],
+      "automerge": true
+    }
+  ],
+
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["every week"]
+  }
+}
