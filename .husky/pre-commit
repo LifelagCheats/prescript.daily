@@ -6,4 +6,6 @@ pnpm build
 
 rm -rf apps/frontend/dist
 
+gitleaks protect --staged
+
 echo "✅ All checks passed."
