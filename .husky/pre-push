@@ -1,6 +1,13 @@
 #!/usr/bin/env sh
 
-git fetch origin
+git fetch origin || exit 1
+
+UPSTREAM=$(git rev-parse --abbrev-ref --symbolic-full-name '@{u}' 2>/dev/null)
+
+if [ -z "$UPSTREAM" ]; then
+  echo "No upstream configured, skipping remote sync check."
+  exit 0
+fi
 
 LOCAL=$(git rev-parse @)
 REMOTE=$(git rev-parse @{u})
