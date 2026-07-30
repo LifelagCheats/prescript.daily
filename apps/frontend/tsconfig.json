@@ -1,54 +1,23 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "include": [
-    ".astro/types.d.ts",
-    "**/*"
-  ],
-  "exclude": [
-    "dist"
-  ],
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"],
   "compilerOptions": {
     "module": "ESNext",
     "resolveJsonModule": true,
-    "types": [
-      "astro/client",
-      "vite/client",
-      "node"
-    ],
+    "types": ["astro/client", "vite/client", "node"],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@components/*": [
-        "./src/components/*"
-      ],
-      "@layouts/*": [
-        "./src/layouts/*"
-      ],
-      "@assets/*": [
-        "./src/assets/*"
-      ],
-      "@scripts/*": [
-        "./src/scripts/*"
-      ],
-      "@styles/*": [
-        "./src/styles/*"
-      ],
-      "@pages/*": [
-        "./src/pages/*"
-      ],
-      "@data/*": [
-        "./src/data/*"
-      ],
-      "@types/*": [
-        "./src/types/*"
-      ],
-      "@utils/*": [
-        "./src/utils/*"
-      ],
-      "@lib/*": [
-        "./src/lib/*"
-      ]
+      "@/*": ["./src/*"],
+      "@components/*": ["./src/components/*"],
+      "@layouts/*": ["./src/layouts/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@scripts/*": ["./src/scripts/*"],
+      "@styles/*": ["./src/styles/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@data/*": ["./src/data/*"],
+      "@types/*": ["./src/types/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@lib/*": ["./src/lib/*"]
     }
   }
 }

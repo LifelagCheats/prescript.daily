@@ -1,5 +1,5 @@
 import { Howl } from 'howler';
-import { createServerClient } from "@lib/supabase";
+import { createServerClient } from '@lib/supabase';
 
 // NOTE: if you have any suggestions, please leave an issue on github!
 /* NOTE: the prescripts were made by AI. yes, i know, but i won't do such a repetitive task myself! 
@@ -8,20 +8,18 @@ import { createServerClient } from "@lib/supabase";
 */
 
 const button: HTMLElement | null = document.querySelector('.PrescriptButton');
-const prescript: HTMLElement | null = document.querySelector(".Prescript");
+const prescript: HTMLElement | null = document.querySelector('.Prescript');
 
 const supabase = createServerClient();
 
-const { count } = await supabase
-  .from("Prescripts")
-  .select("*", { count: "exact", head: true });
+const { count } = await supabase.from('Prescripts').select('*', { count: 'exact', head: true });
 
 const beep = new Howl({
-  src: ['/sounds/beep.mp3']
+  src: ['/sounds/beep.mp3'],
 });
 
 const start = new Howl({
-  src: ['/sounds/beepstart.mp3']
+  src: ['/sounds/beepstart.mp3'],
 });
 
 function randomInt(min: number, max: number) {
@@ -52,7 +50,7 @@ function revealTextScramble(
   fromText: string,
   finalText: string,
   options: ScrambleOptions = {},
-  globals: ScrambleGlobals = { audioUnlocked: false, playBeep: () => {} }
+  globals: ScrambleGlobals = { audioUnlocked: false, playBeep: () => {} },
 ): void {
   start.play();
   // Stop any previous scramble
@@ -63,12 +61,12 @@ function revealTextScramble(
 
   const {
     fps = 16,
-    scrambleChars = "0123456789!█▒░ABCDEF?#@.$&",
-    blockChar = "█",
+    scrambleChars = '0123456789!█▒░ABCDEF?#@.$&',
+    blockChar = '█',
     revealSpeed = 0.045,
     blockChance = 0.35,
     beepChancePerFrame = 0.35,
-    minBeepGapMs = 70
+    minBeepGapMs = 70,
   } = options;
 
   const { audioUnlocked } = globals;
@@ -88,9 +86,9 @@ function revealTextScramble(
     let out: string = '';
 
     for (let i = 0; i < len; i++) {
-      const targetChar: string = finalText[i] ?? ''; 
+      const targetChar: string = finalText[i] ?? '';
       if (i < progress) {
-        out += targetChar; 
+        out += targetChar;
       } else {
         if (targetChar === ' ' || (fromText[i] ?? '') === ' ') {
           out += ' ';
@@ -102,15 +100,13 @@ function revealTextScramble(
 
     el.textContent = out;
 
-
     if (audioUnlocked && progress < len) {
       const now: number = performance.now();
-      if (Math.random() < beepChancePerFrame && (now - lastBeepTime) > minBeepGapMs) {
+      if (Math.random() < beepChancePerFrame && now - lastBeepTime > minBeepGapMs) {
         beep.play();
         lastBeepTime = now;
       }
     }
-
 
     if (progress >= len) {
       el.textContent = finalText;
@@ -124,25 +120,24 @@ function revealTextScramble(
 }
 
 if (prescript) {
-  button?.addEventListener("click", async () => { 
+  button?.addEventListener('click', async () => {
     const { data: slip } = await supabase
       .from('Prescripts')
       .select('id, instruction')
       .order('id', { ascending: false })
       .eq('id', randomInt(1, count ?? 0));
-    
+
     if (!slip || !prescript) return;
 
     revealTextScramble(
       prescript,
-      "",
+      '',
       slip[0].instruction,
       {},
       {
         audioUnlocked: true,
-        playBeep: () => beep.play()
-      }
-    ); 
+        playBeep: () => beep.play(),
+      },
+    );
   });
 }
-

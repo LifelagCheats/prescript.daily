@@ -3,6 +3,7 @@ pnpm dlx lint-staged
 pnpm typecheck
 pnpm lint
 pnpm build
+pnpm format:check
 
 rm -rf apps/frontend/dist
 

@@ -1,0 +1,12 @@
+# dependencies
+node_modules/
+
+# builds
+dist/
+.astro/
+
+# lockfiles
+pnpm-lock.yaml
+
+# environment
+.env*

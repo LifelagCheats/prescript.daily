@@ -52,7 +52,7 @@ body {
   display: flex;
   flex-shrink: 0;
   position: relative;
-  margin-top: 500px; 
+  margin-top: 500px;
   width: 1000px;
   height: 500px;
   bottom: 200px;
@@ -72,7 +72,10 @@ body {
   color: white;
   font-family: pixelmplus12regular;
   font-size: 23px;
-  text-shadow: 0 0 0.2px #fff, 0 0 12px #4269b8, 0 0 50px #4269b8;
+  text-shadow:
+    0 0 0.2px #fff,
+    0 0 12px #4269b8,
+    0 0 50px #4269b8;
 
   overflow: hidden;
   white-space: normal;

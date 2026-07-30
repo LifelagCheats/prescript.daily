@@ -1,7 +1,8 @@
 {
   "name": "prescript.daily",
   "version": "0.0.1",
-  "description": "",
+  "type": "module",
+  "description": "The will of the City, now on the web.",
   "main": "index.js",
   "scripts": {
     "prepare": "husky",
@@ -11,11 +12,16 @@
     "build": "pnpm -r build",
     "lint": "pnpm -r lint",
     "lint:fix": "pnpm -r lint:fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "typecheck": "pnpm -r typecheck"
   },
   "lint-staged": {
     "apps/frontend/**/*.{js,ts,jsx,tsx,astro}": [
       "eslint --fix"
+    ],
+    "**/*.{js,ts,jsx,tsx,astro,json,css,md}": [
+      "prettier --write"
     ]
   },
   "keywords": [],
@@ -32,8 +38,11 @@
     "@semantic-release/github": "^12.0.9",
     "@semantic-release/release-notes-generator": "^14.1.1",
     "eslint": "^10.8.0",
+    "eslint-config-prettier": "^10.1.8",
     "globals": "^17.8.0",
     "husky": "^9.1.7",
+    "lint-staged": "^17.2.0",
+    "prettier": "^3.9.6",
     "semantic-release": "^25.0.8",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.65.0"
