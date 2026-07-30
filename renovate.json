@@ -1,11 +1,9 @@
 {
   "extends": ["config:recommended"],
 
-  "enabledManagers": ["pnpm"],
+  "baseBranches": ["dev"],
 
-  "schedule": ["every day"],
-
-  "targetBranch": "dev",
+  "schedule": ["before 12pm on Monday"],
 
   "prConcurrentLimit": 5,
 
@@ -21,19 +19,16 @@
       "groupName": "development tooling",
       "matchDepTypes": ["devDependencies"]
     },
-
     {
       "description": "Group frontend application updates",
       "groupName": "frontend dependencies",
       "matchFileNames": ["apps/frontend/package.json"]
     },
-
     {
       "description": "Do not automatically merge major updates",
       "matchUpdateTypes": ["major"],
       "automerge": false
     },
-
     {
       "description": "Automatically merge safe patch updates",
       "matchUpdateTypes": ["patch"],
@@ -43,6 +38,6 @@
 
   "lockFileMaintenance": {
     "enabled": true,
-    "schedule": ["every week"]
+    "schedule": ["before 12pm on Monday"]
   }
 }
