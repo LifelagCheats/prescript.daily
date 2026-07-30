@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+
+git fetch origin
+
+LOCAL=$(git rev-parse @)
+REMOTE=$(git rev-parse @{u})
+
+if [ "$LOCAL" = "$REMOTE" ]; then
+  exit 0
+fi
+
+BASE=$(git merge-base @ @{u})
+
+if [ "$LOCAL" = "$BASE" ]; then
+  echo "❌ Your branch is behind the remote. Run 'git pull --rebase' first."
+  exit 1
+fi
