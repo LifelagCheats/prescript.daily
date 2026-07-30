@@ -7,6 +7,18 @@ import { createServerClient } from '@lib/supabase';
     i say that AI is good in some areas and bad in others, code is one of them.
 */
 
+async function handleError(error: unknown) {
+  await fetch('/api/error', {
+    method: 'POST',
+    body: JSON.stringify({
+      message: error instanceof Error ? error.message : String(error),
+      stack: error instanceof Error ? error.stack : '',
+      browser: navigator.userAgent,
+      platform: navigator.platform,
+    }),
+  });
+}
+
 const button: HTMLElement | null = document.querySelector('.PrescriptButton');
 const prescript: HTMLElement | null = document.querySelector('.Prescript');
 
@@ -121,23 +133,27 @@ function revealTextScramble(
 
 if (prescript) {
   button?.addEventListener('click', async () => {
-    const { data: slip } = await supabase
-      .from('Prescripts')
-      .select('id, instruction')
-      .order('id', { ascending: false })
-      .eq('id', randomInt(1, count ?? 0));
+    try {
+      const { data: slip } = await supabase
+        .from('Prescripts')
+        .select('id, instruction')
+        .order('id', { ascending: false })
+        .eq('id', randomInt(1, count ?? 0));
 
-    if (!slip || !prescript) return;
+      if (!slip || !prescript) return;
 
-    revealTextScramble(
-      prescript,
-      '',
-      slip[0].instruction,
-      {},
-      {
-        audioUnlocked: true,
-        playBeep: () => beep.play(),
-      },
-    );
+      revealTextScramble(
+        prescript,
+        '',
+        slip[0].instruction,
+        {},
+        {
+          audioUnlocked: true,
+          playBeep: () => beep.play(),
+        },
+      );
+    } catch (error) {
+      await handleError(error);
+    }
   });
 }
