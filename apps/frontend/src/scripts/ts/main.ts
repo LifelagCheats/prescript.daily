@@ -24,6 +24,12 @@ function randomInt(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+let cachedIds: number[] = JSON.parse(localStorage.getItem('cachedIds') ?? '[]') as number[];
+
+if (cachedIds.length === count) {
+  cachedIds = [];
+}
+
 const beep = new Howl({
   src: ['/sounds/beep.mp3'],
   loop: false,
@@ -143,9 +149,10 @@ if (prescript) {
           .from('Prescripts')
           .select('id, instruction')
           .order('id', { ascending: false })
+          .not('id', 'in', `(${cachedIds ? cachedIds.join(',') : ''})`)
           .eq('id', randomInt(1, count ?? 0));
 
-        if (!slip || !prescript) return;
+        if (!slip || slip.length === 0 || !prescript) return;
 
         revealTextScramble(
           prescript,
@@ -157,6 +164,9 @@ if (prescript) {
             playBeep: () => beep.play(),
           },
         );
+
+        cachedIds.push(slip[0].id);
+        localStorage.setItem('cachedIds', JSON.stringify(cachedIds));
       }
     } catch (error) {
       await handleError(error);
