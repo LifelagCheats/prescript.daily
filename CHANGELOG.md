@@ -1,3 +1,9 @@
+# [1.1.0](https://github.com/LifelagCheats/prescript.daily/compare/v1.0.0...v1.1.0) (2026-08-01)
+
+### Features
+
+- **main:** add basic discord-webhook-based Error handling to app ([fefcb38](https://github.com/LifelagCheats/prescript.daily/commit/fefcb383f3ff019325bb6ce5a7307fa352497cbf))
+
 # 1.0.0 (2026-07-29)
 
 ### Bug Fixes
