@@ -5,3 +5,6 @@
   <br>
   <p>A web app that delivers Prescripts on-demand</p>
 </div>
+
+> [!NOTE]
+> the code on this website is inspired on the code of beyond's respective prescript website, credits to him!
