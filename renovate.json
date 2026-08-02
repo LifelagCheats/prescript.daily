@@ -3,6 +3,10 @@
 
   "baseBranches": ["dev"],
 
+  "pruneStaleBranches": true,
+
+  "recreateWhen": "never",
+
   "schedule": ["before 12pm on Monday"],
 
   "prConcurrentLimit": 5,

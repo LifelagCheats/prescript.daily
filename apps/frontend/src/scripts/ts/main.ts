@@ -1,70 +1,80 @@
+// NOTE: if you have any suggestions, please leave an issue on github!
+/* NOTE: the prescripts were made by AI. yes, i know, but i won't do such a repetitive task myself! 
+    
+    in fact, NONE of the code is AI made!
+    i say that AI is good in some areas and bad in others, code is one of them.
+
+  NOTE: might just move this when it gets big but for now it stays this way
+*/
+
 import { Howl } from 'howler';
 import { createServerClient } from '@lib/supabase';
 
-// NOTE: if you have any suggestions, please leave an issue on github!
-/* NOTE: the prescripts were made by AI. yes, i know, but i won't do such a repetitive task myself! 
-    in fact, NONE of the code is AI made!
-    i say that AI is good in some areas and bad in others, code is one of them.
-*/
+import handleError from '@lib/errorHandler';
+import type { ScramblerGlobals, ScramblerOptions, RevealElement } from '@/types/scrambler';
 
-async function handleError(error: unknown) {
-  await fetch('/api/error', {
-    method: 'POST',
-    body: JSON.stringify({
-      message: error instanceof Error ? error.message : String(error),
-      stack: error instanceof Error ? error.stack : '',
-      browser: navigator.userAgent,
-      platform: navigator.platform,
-    }),
-  });
-}
+const supabase = createServerClient();
 
 const button: HTMLElement | null = document.querySelector('.PrescriptButton');
 const prescript: HTMLElement | null = document.querySelector('.Prescript');
 
-const supabase = createServerClient();
-
 const { count } = await supabase.from('Prescripts').select('*', { count: 'exact', head: true });
-
-const beep = new Howl({
-  src: ['/sounds/beep.mp3'],
-});
-
-const start = new Howl({
-  src: ['/sounds/beepstart.mp3'],
-});
 
 function randomInt(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-interface ScrambleOptions {
-  fps?: number;
-  scrambleChars?: string;
-  blockChar?: string;
-  revealSpeed?: number;
-  blockChance?: number;
-  beepChancePerFrame?: number;
-  minBeepGapMs?: number;
+let cachedIds: number[] = JSON.parse(localStorage.getItem('cachedIds') ?? '[]') as number[];
+
+if (cachedIds.length === count) {
+  cachedIds = [];
 }
 
-interface ScrambleGlobals {
-  audioUnlocked: boolean;
-  playBeep: () => void;
-}
+const beep = new Howl({
+  src: ['/sounds/beep.mp3'],
+  loop: false,
+  autoplay: false,
+  preload: true,
+  html5: false,
+  onloaderror: function (id, err) {
+    handleError(err);
+  },
+  onplayerror: function (id, err) {
+    handleError(err);
+  },
+});
 
-interface RevealElement extends HTMLElement {
-  __revealTimer?: ReturnType<typeof setInterval> | null;
-}
+const start = new Howl({
+  src: ['/sounds/beepstart.mp3'],
+  loop: false,
+  autoplay: false,
+  preload: true,
+  html5: false,
+  onloaderror: function (id, err) {
+    handleError(err);
+  },
+  onplayerror: function (id, err) {
+    handleError(err);
+  },
+});
 
 function revealTextScramble(
   el: RevealElement,
   fromText: string,
   finalText: string,
-  options: ScrambleOptions = {},
-  globals: ScrambleGlobals = { audioUnlocked: false, playBeep: () => {} },
+  options: ScramblerOptions = {},
+  globals: ScramblerGlobals = { audioUnlocked: false, playBeep: () => {} },
 ): void {
-  start.play();
+  if (!el.classList.contains('busy')) {
+    el.classList.add('busy');
+  } else {
+    return;
+  }
+
+  if (!start.playing()) {
+    start.play();
+  }
+
   // Stop any previous scramble
   if (el.__revealTimer) {
     clearInterval(el.__revealTimer);
@@ -126,7 +136,7 @@ function revealTextScramble(
         clearInterval(el.__revealTimer);
         el.__revealTimer = null;
       }
-      el.classList.remove('idle');
+      el.classList.remove('busy');
     }
   }, 1000 / fps);
 }
@@ -134,24 +144,30 @@ function revealTextScramble(
 if (prescript) {
   button?.addEventListener('click', async () => {
     try {
-      const { data: slip } = await supabase
-        .from('Prescripts')
-        .select('id, instruction')
-        .order('id', { ascending: false })
-        .eq('id', randomInt(1, count ?? 0));
+      if (!prescript.classList.contains('busy')) {
+        const { data: slip } = await supabase
+          .from('Prescripts')
+          .select('id, instruction')
+          .order('id', { ascending: false })
+          .not('id', 'in', `(${cachedIds ? cachedIds.join(',') : ''})`)
+          .eq('id', randomInt(1, count ?? 0));
 
-      if (!slip || !prescript) return;
+        if (!slip || slip.length === 0 || !prescript) return;
 
-      revealTextScramble(
-        prescript,
-        '',
-        slip[0].instruction,
-        {},
-        {
-          audioUnlocked: true,
-          playBeep: () => beep.play(),
-        },
-      );
+        revealTextScramble(
+          prescript,
+          '',
+          slip[0].instruction,
+          {},
+          {
+            audioUnlocked: true,
+            playBeep: () => beep.play(),
+          },
+        );
+
+        cachedIds.push(slip[0].id);
+        localStorage.setItem('cachedIds', JSON.stringify(cachedIds));
+      }
     } catch (error) {
       await handleError(error);
     }
