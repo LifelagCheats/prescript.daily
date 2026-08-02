@@ -4,85 +4,72 @@
   font-weight: normal;
   font-style: normal;
 }
-
 body {
   background: black;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  min-height: 100svh;
+  margin: 0;
+  padding: 1.5rem;
+  box-sizing: border-box;
   overflow: hidden;
 }
-
 .LogoContainer {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: fit-content;
-  height: fit-content;
-
-  bottom: 100px;
-  left: 380px;
-
-  gap: 4px;
-
+  gap: 0.25rem;
+  bottom: clamp(4rem, 12vh, 6.5rem);
   user-select: none;
-
   img:nth-child(3) {
-    margin-top: -170px;
+    margin-top: -10.625rem;
   }
 }
-
 .PrescriptButton {
-  position: absolute;
-  margin-bottom: 200px;
+  position: relative;
   cursor: pointer;
-
   transition: filter ease 0.5s;
   user-select: none;
+  top: clamp(4.5rem, 12vh, 6.5rem);
+  right: 0.65rem;
+  width: clamp(60px, 15vw, 120px);
+  &:hover {
+    filter: brightness(1.2);
+  }
 }
-
-.PrescriptButton:hover {
-  filter: brightness(1.2);
-}
-
 .GlobalContainer {
   display: flex;
-  flex-shrink: 0;
-  position: relative;
-  margin-top: 500px;
-  width: 1000px;
-  height: 500px;
-  bottom: 200px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 62.5rem;
+  height: clamp(9rem, 22vh, 12.5rem);
 }
 
 .PrescriptContainer {
-  position: relative;
+  position: fixed;
   display: flex;
   justify-content: center;
   text-align: center;
   align-items: center;
-  flex-direction: row;
-  right: 120px;
-  top: 150px;
-  width: 1000px;
-  height: 200px;
+  width: 100%;
+  max-width: 50rem;
+  bottom: clamp(9rem, 22svh, 9rem);
   color: white;
   font-family: pixelmplus12regular;
-  font-size: 23px;
+  font-size: clamp(0.875rem, 2.5vw, 1.4375rem);
   text-shadow:
     0 0 0.2px #fff,
     0 0 12px #4269b8,
     0 0 50px #4269b8;
-
-  overflow: hidden;
-  white-space: normal;
   overflow-wrap: break-word;
-  flex-wrap: wrap;
+  word-break: break-word;
 }
-
 .Prescript {
   max-width: 100%;
   overflow-wrap: break-word;
