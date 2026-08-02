@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@astrojs/vercel": "^11.0.4",
-    "astro": "^7.1.5"
+    "astro": "^7.1.6"
   },
   "devDependencies": {
     "@supabase/supabase-js": "^2.111.0",
@@ -32,6 +32,6 @@
     "prettier": "^3.9.6",
     "sass": "^1.102.0",
     "typescript": "^7.0.2",
-    "vite": "^8.1.5"
+    "vite": "^8.2.0"
   }
 }
