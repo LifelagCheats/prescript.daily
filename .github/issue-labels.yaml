@@ -1,0 +1,41 @@
+bug:
+  - 'bug'
+  - 'error'
+  - 'broken'
+  - 'crash'
+  - 'fails'
+
+feature:
+  - 'feature'
+  - 'request'
+  - 'enhancement'
+  - 'add'
+
+astro:
+  - 'astro'
+
+frontend:
+  - 'frontend'
+
+backend:
+  - 'backend'
+
+typescript:
+  - 'typescript'
+  - 'ts'
+
+javascript:
+  - 'javascript'
+  - 'js'
+
+scss:
+  - 'sass'
+  - 'css'
+  - 'scss'
+
+dependencies:
+  - 'dependencies'
+  - 'packages'
+
+CI:
+  - 'ci'

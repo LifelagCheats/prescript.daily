@@ -1,0 +1,43 @@
+name: Issue Labeler
+
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  issues: write
+
+jobs:
+  label:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/github-script@v8
+        with:
+          script: |
+            const fs = require("fs");
+            const yaml = require("yaml");
+
+            const config = yaml.parse(
+              fs.readFileSync(".github/issue-labels.yaml", "utf8")
+            );
+
+            const issue = context.payload.issue;
+            const text = `${issue.title}\n${issue.body || ""}`.toLowerCase();
+
+            const labels = [];
+
+            for (const [label, patterns] of Object.entries(config)) {
+              if (patterns.some(pattern => text.includes(pattern))) {
+                labels.push(label);
+              }
+            }
+
+            if (labels.length) {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                labels
+              });
+            }
