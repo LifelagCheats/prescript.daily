@@ -10,6 +10,10 @@ overrides:
 importers:
 
   .:
+    dependencies:
+      tinyexec:
+        specifier: 0.3.2
+        version: 0.3.2
     devDependencies:
       '@commitlint/cli':
         specifier: ^21.2.1
