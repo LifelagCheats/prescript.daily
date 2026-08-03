@@ -1,3 +1,14 @@
+# [1.2.0](https://github.com/LifelagCheats/prescript.daily/compare/v1.1.0...v1.2.0) (2026-08-02)
+
+### Bug Fixes
+
+- **server:** fix astro using incorrect SSR adapter (node) and tuned it to vercel ([0c0120b](https://github.com/LifelagCheats/prescript.daily/commit/0c0120b0df45a11c94f6288e5d93404bbf5a1cd7))
+
+### Features
+
+- **app:** add never-repeating prescript system that saves to storage ([af6972e](https://github.com/LifelagCheats/prescript.daily/commit/af6972e7fb284c62aaf24612ec6f1a9bd7fe2ba7))
+- **dev:** add modular website favicon support to the astro layout component ([e7e3d5c](https://github.com/LifelagCheats/prescript.daily/commit/e7e3d5c5d628da4a938c892efabf9c27df154c38))
+
 # [1.1.0](https://github.com/LifelagCheats/prescript.daily/compare/v1.0.0...v1.1.0) (2026-08-01)
 
 ### Features
