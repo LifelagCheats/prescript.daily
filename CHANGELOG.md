@@ -1,3 +1,15 @@
+# [1.3.0](https://github.com/LifelagCheats/prescript.daily/compare/v1.2.0...v1.3.0) (2026-08-03)
+
+### Bug Fixes
+
+- **deps:** fix mistracked dependency in pnpm lockfile ([204ba72](https://github.com/LifelagCheats/prescript.daily/commit/204ba72e9aa57dc12c768b66c3fc2325dd28ae8f))
+- **deps:** fix tinyexec not being tracked in lockfile correctly ([396708d](https://github.com/LifelagCheats/prescript.daily/commit/396708dda4e95dfd56d0022e15607602152f2618))
+- **security:** fix the critical vulnerability with the package tar@7.5.18 ([78baff2](https://github.com/LifelagCheats/prescript.daily/commit/78baff26fe884be4523fdd2b3db43a354b3ccd5a))
+
+### Features
+
+- **design:** make website design responsive to all layouts and screen sizes ([2d7de10](https://github.com/LifelagCheats/prescript.daily/commit/2d7de1088cb3910b84f4f2f803b0734324a8a7eb))
+
 # [1.2.0](https://github.com/LifelagCheats/prescript.daily/compare/v1.1.0...v1.2.0) (2026-08-02)
 
 ### Bug Fixes
