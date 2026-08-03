@@ -1,0 +1,40 @@
+frontend:
+  - changed-files:
+      - any-glob-to-any-file:
+          - frontend/**
+
+CI:
+  - changed-files:
+      - any-glob-to-any-file:
+          - .github/**
+
+feature:
+  - head-branch:
+      - '^feature/'
+
+bug:
+  - head-branch:
+      - '^fix/'
+
+docs:
+  - head-branch:
+      - '^docs/'
+
+dependencies:
+  - head-branch:
+      - '^renovate/'
+
+astro:
+  - changed-files:
+      - any-glob-to-any-file:
+          - '**/*.astro'
+
+typescript:
+  - changed-files:
+      - any-glob-to-any-file:
+          - '**/*.ts'
+
+javascript:
+  - changed-files:
+      - any-glob-to-any-file:
+          - '**/*.js'
