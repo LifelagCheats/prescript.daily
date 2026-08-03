@@ -12,6 +12,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v4
+
+      - run: npm install yaml
+
       - uses: actions/github-script@v8
         with:
           script: |
