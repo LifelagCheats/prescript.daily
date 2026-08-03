@@ -15,4 +15,4 @@ minimumReleaseAgeExclude:
   - js-yaml@4.1.2 || 4.3.0
 
 overrides:
-  tar: '7.5.19'
+  tar: '7.5.22'
