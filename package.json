@@ -49,6 +49,6 @@
     "vercel": "^58.4.4"
   },
   "dependencies": {
-    "tinyexec": "0.3.2"
+    "tinyexec": "1.3.0"
   }
 }
