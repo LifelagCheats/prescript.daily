@@ -60,6 +60,16 @@ body {
   width: 100%;
   max-width: 50rem;
   bottom: clamp(9rem, 22svh, 9rem);
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.Prescript {
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+.IndexText {
   color: white;
   font-family: pixelmplus12regular;
   font-size: clamp(0.875rem, 2.5vw, 1.4375rem);
@@ -67,10 +77,4 @@ body {
     0 0 0.2px #fff,
     0 0 12px #4269b8,
     0 0 50px #4269b8;
-  overflow-wrap: break-word;
-  word-break: break-word;
-}
-.Prescript {
-  max-width: 100%;
-  overflow-wrap: break-word;
 }
