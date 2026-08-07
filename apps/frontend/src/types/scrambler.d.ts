@@ -16,3 +16,8 @@ export interface ScramblerGlobals {
 export interface RevealElement extends HTMLElement {
   __revealTimer?: ReturnType<typeof setInterval> | null;
 }
+
+export interface Prescript {
+  id: number;
+  instruction: string;
+}
