@@ -1,0 +1,54 @@
+.InfoBox {
+  position: absolute;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  width: 18rem;
+  height: 45rem;
+  border: 5px solid #4facff;
+  border-left: 10px solid #4facff;
+  border-bottom: 10px solid #4facff;
+  box-sizing: border-box;
+  padding: 2rem;
+  gap: 2rem;
+
+  right: 80%;
+}
+
+.UserInfo {
+  width: 13rem;
+  height: 30rem;
+  border: 5px solid #4facff;
+}
+
+.PrescriptInfo {
+  width: 13rem;
+  height: 15rem;
+  border: 5px solid #4facff;
+}
+
+.StreakBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Streak {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  width: min-content;
+  padding: 1rem;
+}
+
+.FadeIn {
+  opacity: 0;
+  transition: opacity 300ms ease;
+
+  &.show {
+    opacity: 1;
+  }
+}
