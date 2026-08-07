@@ -1,23 +1,36 @@
 ---
 import Layout from "@layouts/layout.astro" 
-import '@styles/sass/main.scss'
+import Streak from "@components/streak.astro"
 
+import '@styles/sass/main.scss'
+import '@styles/sass/infobox.scss'
+
+import { createServerClient } from "@lib/supabase";
+import randomInt from "@/lib/general";
+import FadeIn from "@components/react/fadeIn";
+
+const supabase = createServerClient();
+
+const { data: raw } = await supabase
+  .from("users")
+  .select("id, streak")
+  .order("id", { ascending: false })
+  .eq("id", randomInt(1, 1));
+
+const streakCount = raw?.[0]?.streak ?? 0;
 ---
 
 <Layout title="Prescript.daily" icon="/favicon.png">
 <meta name="description" content="Come, and recieve your heavenly mandated Prescript.">
   <meta name="author" content="Will of the City">
 
-  <div class="GlobalContainer">
-    <div class="LogoContainer">
-      <div class="PrescriptButton">
-        <img src="/assets/Aconite.svg" alt="button" class="FlowerImg">
+  <div class="InfoBox" id="InfoBox">
+    <div class="UserInfo" id="UserInfo">
+      <div class="StreakBox" id="StreakBox">
+        <Streak streak={streakCount} />
       </div>
-      <img src="/assets/Hand.svg" alt="test">
-      <img src="/assets/Emblem.svg" alt="emblem">
-  </div>
-  <div class="PrescriptContainer">
-      <span class="Prescript">look up, touch the aconite</span>
+    </div>
+    <div class="PrescriptInfo" id="PrescriptInfo"></div>
   </div>
 
 <script>
