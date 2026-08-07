@@ -6,12 +6,17 @@
 
   NOTE: might just move this when it gets big but for now it stays this way
 */
-
 import { Howl } from 'howler';
 import { createServerClient } from '@lib/supabase';
 
 import handleError from '@lib/errorHandler';
-import type { ScramblerGlobals, ScramblerOptions, RevealElement } from '@/types/scrambler';
+import type {
+  ScramblerGlobals,
+  ScramblerOptions,
+  RevealElement,
+  Prescript,
+} from '@/types/scrambler';
+import randomInt from '@lib/general';
 
 const supabase = createServerClient();
 
@@ -20,14 +25,11 @@ const prescript: HTMLElement | null = document.querySelector('.Prescript');
 
 const { count } = await supabase.from('Prescripts').select('*', { count: 'exact', head: true });
 
-function randomInt(min: number, max: number) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
 let cachedIds: number[] = JSON.parse(localStorage.getItem('cachedIds') ?? '[]') as number[];
 
 if (cachedIds.length === count) {
   cachedIds = [];
+  localStorage.setItem('cachedIds', JSON.stringify(cachedIds));
 }
 
 const beep = new Howl({
@@ -64,100 +66,107 @@ function revealTextScramble(
   finalText: string,
   options: ScramblerOptions = {},
   globals: ScramblerGlobals = { audioUnlocked: false, playBeep: () => {} },
-): void {
-  if (!el.classList.contains('busy')) {
-    el.classList.add('busy');
-  } else {
-    return;
-  }
+): Promise<void> {
+  return new Promise((resolve) => {
+    if (!el.classList.contains('busy')) {
+      el.classList.add('busy');
+    }
 
-  if (!start.playing()) {
-    start.play();
-  }
+    if (!start.playing()) {
+      start.play();
+    }
 
-  // Stop any previous scramble
-  if (el.__revealTimer) {
-    clearInterval(el.__revealTimer);
-    el.__revealTimer = null;
-  }
+    // Stop any previous scramble
+    if (el.__revealTimer) {
+      clearInterval(el.__revealTimer);
+      el.__revealTimer = null;
+    }
 
-  const {
-    fps = 16,
-    scrambleChars = '0123456789!█▒░ABCDEF?#@.$&',
-    blockChar = '█',
-    revealSpeed = 0.045,
-    blockChance = 0.35,
-    beepChancePerFrame = 0.35,
-    minBeepGapMs = 70,
-  } = options;
+    const {
+      fps = 16,
+      scrambleChars = '0123456789!█▒░ABCDEF?#@.$&',
+      blockChar = '█',
+      revealSpeed = 0.045,
+      blockChance = 0.35,
+      beepChancePerFrame = 0.35,
+      minBeepGapMs = 70,
+    } = options;
 
-  const { audioUnlocked } = globals;
+    const { audioUnlocked } = globals;
 
-  const len: number = Math.max(fromText.length, finalText.length);
-  let progress: number = 0;
-  let lastBeepTime: number = 0;
+    const len: number = Math.max(fromText.length, finalText.length);
+    let progress: number = 0;
+    let lastBeepTime: number = 0;
 
-  const randomChar = (): string => {
-    return Math.random() < blockChance
-      ? blockChar
-      : scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
-  };
+    const randomChar = (): string => {
+      return Math.random() < blockChance
+        ? blockChar
+        : scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
+    };
 
-  el.__revealTimer = setInterval((): void => {
-    progress += revealSpeed * len;
-    let out: string = '';
+    el.__revealTimer = setInterval((): void => {
+      progress += revealSpeed * len;
+      let out: string = '';
 
-    for (let i = 0; i < len; i++) {
-      const targetChar: string = finalText[i] ?? '';
-      if (i < progress) {
-        out += targetChar;
-      } else {
-        if (targetChar === ' ' || (fromText[i] ?? '') === ' ') {
-          out += ' ';
+      for (let i = 0; i < len; i++) {
+        const targetChar: string = finalText[i] ?? '';
+        if (i < progress) {
+          out += targetChar;
         } else {
-          out += randomChar();
+          if (targetChar === ' ' || (fromText[i] ?? '') === ' ') {
+            out += ' ';
+          } else {
+            out += randomChar();
+          }
         }
       }
-    }
 
-    el.textContent = out;
+      el.textContent = out;
 
-    if (audioUnlocked && progress < len) {
-      const now: number = performance.now();
-      if (Math.random() < beepChancePerFrame && now - lastBeepTime > minBeepGapMs) {
-        beep.play();
-        lastBeepTime = now;
+      if (audioUnlocked && progress < len) {
+        const now: number = performance.now();
+        if (Math.random() < beepChancePerFrame && now - lastBeepTime > minBeepGapMs) {
+          beep.play();
+          lastBeepTime = now;
+        }
       }
-    }
 
-    if (progress >= len) {
-      el.textContent = finalText;
-      if (el.__revealTimer) {
-        clearInterval(el.__revealTimer);
-        el.__revealTimer = null;
+      if (progress >= len) {
+        el.textContent = finalText;
+        if (el.__revealTimer) {
+          clearInterval(el.__revealTimer);
+          el.__revealTimer = null;
+        }
+        el.classList.remove('busy');
+        resolve();
       }
-      el.classList.remove('busy');
-    }
-  }, 1000 / fps);
+    }, 1000 / fps);
+  });
 }
 
 if (prescript) {
   button?.addEventListener('click', async () => {
     try {
       if (!prescript.classList.contains('busy')) {
-        const { data: slip } = await supabase
+        const query = supabase
           .from('Prescripts')
           .select('id, instruction')
-          .order('id', { ascending: false })
-          .not('id', 'in', `(${cachedIds ? cachedIds.join(',') : ''})`)
-          .eq('id', randomInt(1, count ?? 0));
+          .order('id', { ascending: false });
 
-        if (!slip || slip.length === 0 || !prescript) return;
+        if (cachedIds.length > 0) {
+          query.not('id', 'in', `(${cachedIds.join(',')})`);
+        }
 
-        revealTextScramble(
+        const { data: slips } = await query;
+
+        if (!slips || slips.length === 0 || !prescript) return;
+
+        const slip: Prescript = slips[randomInt(0, slips.length - 1)];
+
+        await revealTextScramble(
           prescript,
           '',
-          slip[0].instruction,
+          slip.instruction,
           {},
           {
             audioUnlocked: true,
@@ -165,7 +174,7 @@ if (prescript) {
           },
         );
 
-        cachedIds.push(slip[0].id);
+        cachedIds.push(slip.id);
         localStorage.setItem('cachedIds', JSON.stringify(cachedIds));
       }
     } catch (error) {
