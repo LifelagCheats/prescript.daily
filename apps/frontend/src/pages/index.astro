@@ -33,9 +33,23 @@ const streakCount = raw?.[0]?.streak ?? 0;
     <div class="PrescriptInfo" id="PrescriptInfo"></div>
   </div>
 
+  <FadeIn client:load>
+    <div class="GlobalContainer">
+      <div class="LogoContainer">
+        <div class="PrescriptButton">
+          <img src="/assets/Aconite.svg" alt="button" class="FlowerImg">
+        </div>
+        <img src="/assets/Hand.svg" alt="test">
+        <img src="/assets/Emblem.svg" alt="emblem">
+    </div>
+      <div class="PrescriptContainer IndexText">
+          <span class="Prescript">look up, touch the aconite</span>
+      </div>
+    </div>
+  </FadeIn>
+
 <script>
   import "@scripts/ts/main"
 </script>
-  </div>
 </Layout>
 
