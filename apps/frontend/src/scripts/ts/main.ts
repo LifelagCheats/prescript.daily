@@ -137,7 +137,9 @@ function revealTextScramble(
           clearInterval(el.__revealTimer);
           el.__revealTimer = null;
         }
-        el.classList.remove('busy');
+        if (el.classList.contains('busy')) {
+          el.classList.remove('busy');
+        }
         resolve();
         if (endBeep) {
           endBeep.play();
@@ -151,6 +153,8 @@ if (prescript) {
   button?.addEventListener('click', async () => {
     try {
       if (!prescript.classList.contains('busy')) {
+        prescript.classList.add('busy');
+
         const query = supabase
           .from('Prescripts')
           .select('id, instruction')
