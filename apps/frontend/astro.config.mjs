@@ -8,6 +8,12 @@ export default defineConfig({
   adapter: vercel(),
 
   vite: {
+    resolve: {
+      alias: {
+        '@': new URL('./src', import.meta.url).pathname,
+      },
+    },
+
     server: {
       allowedHosts: ['.ngrok-free.app'],
     },
