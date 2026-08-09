@@ -8,9 +8,7 @@
   position: absolute;
   width: 18rem;
   height: 45rem;
-  border: 5px solid colors.$default;
-  border-left: 10px solid colors.$default;
-  border-bottom: 10px solid colors.$default;
+
   box-sizing: border-box;
   padding: 2rem;
   gap: 2rem;
@@ -21,13 +19,11 @@
 .UserInfo {
   width: 13rem;
   height: 30rem;
-  border: 5px solid colors.$default;
 }
 
 .PrescriptInfo {
   width: 13rem;
   height: 15rem;
-  border: 5px solid colors.$default;
 }
 
 .StreakBox {
