@@ -10,7 +10,9 @@ export interface ScramblerOptions {
 
 export interface ScramblerGlobals {
   audioUnlocked: boolean;
-  playBeep: () => void;
+  startBeep?: Howl;
+  Beep?: Howl;
+  endBeep?: Howl;
 }
 
 export interface RevealElement extends HTMLElement {
