@@ -1,0 +1,9 @@
+@mixin glow($color: #4269b8) {
+  color: white;
+  font-family: pixelmplus12regular;
+  font-size: clamp(0.875rem, 2.5vw, 1.4375rem);
+  text-shadow:
+    0 0 0.2px #fff,
+    0 0 12px $color,
+    0 0 50px $color;
+}

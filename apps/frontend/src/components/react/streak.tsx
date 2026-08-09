@@ -8,7 +8,7 @@ type Props = {
 export default function StreakCounter({ streak }: Props) {
   return (
     <FadeIn>
-      <span className="Streak IndexText" id="Streak">
+      <span className="Streak" id="Streak">
         Streak{' '}
         <span className="Counter">
           <CountUp from={0} to={streak} separator="," direction="up" />

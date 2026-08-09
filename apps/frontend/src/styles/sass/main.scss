@@ -1,3 +1,5 @@
+@use '@/styles/sass/components/globals';
+
 @font-face {
   font-family: 'pixelmplus12regular';
   src: url('/fonts/PixelMplus12-Regular.ttf') format('truetype');
@@ -52,6 +54,8 @@ body {
 }
 
 .PrescriptContainer {
+  @include globals.glow;
+
   position: fixed;
   display: flex;
   justify-content: center;
@@ -67,14 +71,4 @@ body {
 .Prescript {
   max-width: 100%;
   overflow-wrap: break-word;
-}
-
-.IndexText {
-  color: white;
-  font-family: pixelmplus12regular;
-  font-size: clamp(0.875rem, 2.5vw, 1.4375rem);
-  text-shadow:
-    0 0 0.2px #fff,
-    0 0 12px #4269b8,
-    0 0 50px #4269b8;
 }
