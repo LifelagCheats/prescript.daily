@@ -65,17 +65,11 @@ function revealTextScramble(
   fromText: string,
   finalText: string,
   options: ScramblerOptions = {},
-  globals: ScramblerGlobals = { audioUnlocked: false, playBeep: () => {} },
+  globals: ScramblerGlobals = {
+    audioUnlocked: false,
+  },
 ): Promise<void> {
   return new Promise((resolve) => {
-    if (!el.classList.contains('busy')) {
-      el.classList.add('busy');
-    }
-
-    if (!start.playing()) {
-      start.play();
-    }
-
     // Stop any previous scramble
     if (el.__revealTimer) {
       clearInterval(el.__revealTimer);
@@ -92,7 +86,13 @@ function revealTextScramble(
       minBeepGapMs = 70,
     } = options;
 
-    const { audioUnlocked } = globals;
+    const { audioUnlocked, startBeep, Beep, endBeep } = globals;
+
+    if (startBeep) {
+      if (!startBeep.playing()) {
+        startBeep.play();
+      }
+    }
 
     const len: number = Math.max(fromText.length, finalText.length);
     let progress: number = 0;
@@ -123,10 +123,10 @@ function revealTextScramble(
 
       el.textContent = out;
 
-      if (audioUnlocked && progress < len) {
+      if (audioUnlocked && Beep && progress < len) {
         const now: number = performance.now();
         if (Math.random() < beepChancePerFrame && now - lastBeepTime > minBeepGapMs) {
-          beep.play();
+          Beep.play();
           lastBeepTime = now;
         }
       }
@@ -139,6 +139,9 @@ function revealTextScramble(
         }
         el.classList.remove('busy');
         resolve();
+        if (endBeep) {
+          endBeep.play();
+        }
       }
     }, 1000 / fps);
   });
@@ -170,7 +173,8 @@ if (prescript) {
           {},
           {
             audioUnlocked: true,
-            playBeep: () => beep.play(),
+            startBeep: start,
+            Beep: beep,
           },
         );
 
