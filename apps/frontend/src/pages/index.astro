@@ -2,26 +2,41 @@
 import Layout from "@layouts/layout.astro" 
 import Streak from "@components/streak.astro"
 import ProgressBar from '@components/progressBar.astro'
+import FadeIn from "@components/react/fadeIn";
+import Complete from '@components/react/completeButton.tsx'
+import Fail from '@components/react/failButton.tsx'
 
 import '@styles/sass/main.scss'
 import '@styles/sass/infobox.scss'
 import '@styles/sass/progressbar.scss'
+import '@styles/sass/result.scss'
 
 import { createServerClient } from "@lib/supabase";
 import randomInt from "@/lib/general";
 import { getRole, nextRole } from '@lib/roles'
-import FadeIn from "@components/react/fadeIn";
+import Login from '@lib/login'
 
 const supabase = createServerClient();
+const login = await Login(
+  "asdasdasdas@example.com",
+  "12345678"
+);
 
-const { data: raw } = await supabase
-  .from("users")
-  .select("id, streak, prescripts_completed")
-  .order("id", { ascending: false })
-  .eq("id", randomInt(1, 1));
+if (!login.user) {
+  throw new Error("Not signed in");
+}
 
-const streakCount = raw?.[0]?.streak ?? 0;
-const Pcompleted = raw?.[0]?.prescripts_completed ?? 0;
+const { data: raw, error } = await supabase
+  .from("profiles")
+  .select("id, user_id, streak, prescripts_completed")
+  .eq("user_id", login.user.id)
+  .single();
+
+console.log(raw);
+console.log(error);
+
+const streakCount = raw?.streak ?? 0;
+const Pcompleted = raw?.prescripts_completed ?? 0;
 const role = getRole(Pcompleted)
 const objective = nextRole(role.name)
 ---
@@ -42,6 +57,10 @@ const objective = nextRole(role.name)
           header={role.name}
           extra={Pcompleted}
         />
+      </div>
+      <div class="ResultBox">
+        <Complete user_id={login.user.id} client:load />
+        <Fail client:load />
       </div>
       <div class="PrescriptInfo" id="PrescriptInfo"></div>
     </div>

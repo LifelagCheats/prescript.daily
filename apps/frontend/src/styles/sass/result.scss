@@ -1,0 +1,27 @@
+@use '@/styles/sass/components/defaults';
+
+.ResultBox {
+  @include defaults.flex($direction: row);
+
+  gap: 5rem;
+}
+
+.CompleteButton {
+  @include defaults.flex;
+
+  height: 50px;
+  width: 50px;
+  background: green;
+  border: 3px solid white;
+  cursor: pointer;
+}
+
+.FailButton {
+  @include defaults.flex;
+
+  height: 50px;
+  width: 50px;
+  background: red;
+  border: 3px solid white;
+  cursor: pointer;
+}

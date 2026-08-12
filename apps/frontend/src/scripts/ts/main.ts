@@ -170,6 +170,8 @@ if (prescript) {
 
         const slip: Prescript = slips[randomInt(0, slips.length - 1)];
 
+        prescript.dataset.id = String(slip.id);
+
         await revealTextScramble(
           prescript,
           '',
