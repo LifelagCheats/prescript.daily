@@ -32,9 +32,6 @@ const { data: raw, error } = await supabase
   .eq("user_id", login.user.id)
   .single();
 
-console.log(raw);
-console.log(error);
-
 const streakCount = raw?.streak ?? 0;
 const Pcompleted = raw?.prescripts_completed ?? 0;
 const role = getRole(Pcompleted)
@@ -60,8 +57,8 @@ const objective = nextRole(role.name)
         />
       </div>
       <div class="ResultBox">
-        <Complete user_id={login.user.id} client:load />
-        <Fail client:load />
+        <Complete client:only="react" user_id={login.user.id} />
+        <Fail client:only="react" />
       </div>
       <div class="PrescriptInfo" id="PrescriptInfo"></div>
     </div>
