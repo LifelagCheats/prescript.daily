@@ -51,7 +51,8 @@ const objective = nextRole(role.name)
         <div class="StreakBox" id="StreakBox">
           <Streak streak={streakCount} />
         </div> 
-        <ProgressBar 
+        <ProgressBar
+          floor={role.Pcompleted}
           progress={Pcompleted} 
           ceiling={objective.Pcompleted} 
           header={role.name}

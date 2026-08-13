@@ -2,13 +2,14 @@
 import ProgressBar from '@components/react/progressBar'
 
 interface Props {
+  floor: number,
   progress: number,
   ceiling: number,
   header: string,
   extra: number
 }
 
-const { progress, ceiling, header, extra } = Astro.props;
+const { floor, progress, ceiling, header, extra } = Astro.props;
 ---
 
-<ProgressBar progress={progress} ceiling={ceiling} header={header} extra={extra} client:load />
+<ProgressBar floor={floor} progress={progress} ceiling={ceiling} header={header} extra={extra} client:load />

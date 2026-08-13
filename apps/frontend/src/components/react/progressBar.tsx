@@ -1,13 +1,15 @@
 type Props = {
+  floor: number;
   progress: number;
   ceiling: number;
   header: string;
   extra: number;
 };
 
-export default function ProgressBar({ progress, ceiling, header, extra }: Props) {
-  const clamped = Math.min(ceiling, Math.max(0, progress));
-  const percentage = (clamped / ceiling) * 100;
+export default function ProgressBar({ floor, progress, ceiling, header, extra }: Props) {
+  const clamped = Math.min(ceiling, Math.max(floor, progress));
+  const range = ceiling - floor;
+  const percentage = ((clamped - floor) / range) * 100;
 
   return (
     <div className="RankBox">
