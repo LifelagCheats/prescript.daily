@@ -31,8 +31,16 @@ jobs:
 
             const labels = [];
 
+            function escapeRegex(str) {
+              return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+            }
+
             for (const [label, patterns] of Object.entries(config)) {
-              if (patterns.some(pattern => text.includes(pattern))) {
+              if (
+                patterns.some(pattern =>
+                  new RegExp(`\\b${escapeRegex(pattern)}\\b`, "i").test(text)
+                )
+              ) {
                 labels.push(label);
               }
             }
