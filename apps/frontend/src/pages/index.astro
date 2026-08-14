@@ -1,7 +1,7 @@
 ---
 import Layout from "@layouts/layout.astro" 
-import Streak from "@components/streak.astro"
-import ProgressBar from '@components/progressBar.astro'
+import Streak from "@components/react/streak.tsx"
+import ProgressBar from '@components/react/progressBar.tsx'
 import FadeIn from "@components/react/fadeIn";
 import Complete from '@components/react/completeButton.tsx'
 import Fail from '@components/react/failButton.tsx'
@@ -46,7 +46,7 @@ const objective = nextRole(role.name)
     <div class="InfoBox" id="InfoBox">
       <div class="UserInfo" id="UserInfo">
         <div class="StreakBox" id="StreakBox">
-          <Streak streak={streakCount} />
+          <Streak streak={streakCount} client:load />
         </div> 
         <ProgressBar
           floor={role.Pcompleted}
@@ -54,7 +54,7 @@ const objective = nextRole(role.name)
           ceiling={objective.Pcompleted} 
           header={role.name}
           extra={Pcompleted}
-        />
+        client:load />
       </div>
       <div class="ResultBox">
         <Complete client:only="react" user_id={login.user.id} />
