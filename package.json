@@ -1,6 +1,5 @@
 {
   "name": "prescript.daily",
-  "version": "0.0.1",
   "type": "module",
   "description": "The will of the City, now on the web.",
   "main": "index.js",
