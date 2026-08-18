@@ -51,9 +51,9 @@ const objective = nextRole(role.name)
 <meta name="description" content="Come, and recieve your heavenly mandated Prescript.">
   <meta name="author" content="Will of the City">
 
-  <FadeIn client:load>
+  <FadeIn client:only="react">
     <div class="FormBox">
-      <Form client:load />
+      <Form client:only="react" />
     </div>
     <div class="InfoBox" id="InfoBox">
       <div class="UserInfo" id="UserInfo">

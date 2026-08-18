@@ -7,6 +7,9 @@ export default defineConfig({
   adapter: vercel(),
 
   vite: {
+    ssr: {
+      noExternal: ['gsap'],
+    },
     resolve: {
       alias: {
         '@': new URL('./src', import.meta.url).pathname,
