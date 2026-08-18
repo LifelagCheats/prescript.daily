@@ -1,20 +1,19 @@
 CREATE OR REPLACE FUNCTION public.handle_new_user()
- RETURNS trigger
- LANGUAGE plpgsql
- SECURITY DEFINER
- SET search_path TO 'public'
+RETURNS trigger
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = public
 AS $function$
-begin
-  insert into public.profiles (
+BEGIN
+  INSERT INTO public.profiles (
     user_id,
     username
   )
-  values (
-    new.id,
-    null
+  VALUES (
+    NEW.id,
+    NEW.raw_user_meta_data->>'username'
   );
 
-  return new;
-end;
-$function$
-
+  RETURN NEW;
+END;
+$function$;
