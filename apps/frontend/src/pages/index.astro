@@ -30,16 +30,13 @@ const { data: { user } } = await supabase.auth.getUser();
 
 console.log("Cookie header:", Astro.request.headers.get("Cookie"));
 
-if (!user) {
-}
-
-console.log(user)
-console.log(user.id)
+if (user) {
 const { data: raw, error } = await supabase
   .from("profiles")
   .select("id, user_id, streak, prescripts_completed")
-  .eq("user_id", user.id)
+  .eq("user_id", user?.id)
   .single();
+}
 
 const streakCount = raw?.streak ?? 0;
 const Pcompleted = raw?.prescripts_completed ?? 0;
@@ -70,7 +67,7 @@ const objective = nextRole(role.name)
         />
       </div>
       <div class="ResultBox">
-        <Complete client:only="react" user_id={user.id} />
+        <Complete client:only="react" user_id={user?.id} />
         <Fail client:only="react" />
       </div>
       <div class="PrescriptInfo" id="PrescriptInfo"></div>
