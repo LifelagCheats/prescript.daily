@@ -1,11 +1,11 @@
-import { createServerClient } from '@/lib/supabase';
+import { createBrowserClient } from '@/lib/supabase';
 import Scramble from '@/lib/scrambler';
 import { audio } from '@/lib/audio';
 
 const PrescriptContainer: HTMLElement | null = document.querySelector('.Prescript');
 
 async function Fail() {
-  const supabase = createServerClient();
+  const supabase = createBrowserClient();
 
   await supabase.rpc('failed');
   if (PrescriptContainer) {

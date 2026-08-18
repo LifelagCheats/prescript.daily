@@ -1,6 +1,6 @@
 import { audio } from '@/lib/audio';
 import Scramble from '@lib/scrambler';
-import { createServerClient } from '@lib/supabase';
+import { createBrowserClient } from '@lib/supabase';
 
 type Props = {
   user_id: string;
@@ -9,7 +9,7 @@ type Props = {
 const PrescriptContainer: HTMLElement | null = document.querySelector('.Prescript');
 
 async function Complete(prescript: number, user_id: string) {
-  const supabase = createServerClient();
+  const supabase = createBrowserClient();
 
   const { data: confirmation } = await supabase
     .from('profiles')
