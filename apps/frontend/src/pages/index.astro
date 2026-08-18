@@ -28,20 +28,21 @@ const supabase = createServerClient({
 });
 const { data: { user } } = await supabase.auth.getUser();
 
-console.log("Cookie header:", Astro.request.headers.get("Cookie"));
-
+let raw = null;
 if (user) {
-const { data: raw, error } = await supabase
+  const result = await supabase
   .from("profiles")
   .select("id, user_id, streak, prescripts_completed")
   .eq("user_id", user?.id)
-  .single();
+    .single();
+
+  raw = result.data;
 }
 
 const streakCount = raw?.streak ?? 0;
 const Pcompleted = raw?.prescripts_completed ?? 0;
-const role = getRole(Pcompleted)
-const objective = nextRole(role.name)
+const role = getRole(Pcompleted) ?? { name: 'Proselyte', Pcompleted: 0 };
+const objective = nextRole(role.name) ?? { name: 'Proxy', Pcompleted: 25};
 ---
 
 <Layout title="Prescript.daily" icon="/favicon.png">
