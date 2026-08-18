@@ -6,6 +6,14 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'firacode';
+  src: url('/fonts/FiraCode-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   background: black;
   display: flex;
@@ -61,7 +69,7 @@ body {
   justify-content: center;
   text-align: center;
   align-items: center;
-  width: 100%;
+  width: 45%;
   max-width: 50rem;
   bottom: clamp(9rem, 22svh, 9rem);
   overflow-wrap: break-word;
