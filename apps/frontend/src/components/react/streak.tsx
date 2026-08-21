@@ -34,14 +34,13 @@ export default function StreakCounter({ streak }: Props) {
           filter: `user_id=eq.${session}`,
         },
         (payload) => {
-          console.log('STREAK CHANGED', payload);
-          console.log('STREAK: ', payload.new.streak);
+          console.log('STREAK CHANGED', payload.new.streak);
 
           setStreak(payload.new.streak);
         },
       )
       .subscribe((status) => {
-        console.log('📡 Channel status:', status);
+        console.log('Channel status:', status);
       });
 
     return () => {

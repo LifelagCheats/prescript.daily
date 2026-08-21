@@ -26,3 +26,7 @@ pnpm-debug.log*
 
 .branches
 .temp
+
+*.log
+*storybook.log
+storybook-static

@@ -11,7 +11,10 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc --noEmit",
-    "astro": "astro"
+    "astro": "astro",
+    "docs:typedoc": "typedoc && tsx scripts/generate-doc-index.ts",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build -o docs/storybook/"
   },
   "lint-staged": {
     "frontend/**/*.{js,ts,jsx,tsx}": [
@@ -35,14 +38,29 @@
     "swr": "^2.5.1"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "latest",
+    "@storybook/addon-a11y": "^10.5.10",
+    "@storybook/addon-docs": "^10.5.10",
+    "@storybook/addon-onboarding": "^10.5.10",
+    "@storybook/addon-vitest": "^10.5.10",
+    "@storybook/react-vite": "^10.5.10",
     "@supabase/supabase-js": "^2.111.0",
     "@types/howler": "^2.2.13",
     "@types/node": "^26.1.2",
+    "@vitest/browser-playwright": "latest",
+    "@vitest/coverage-v8": "latest",
     "eslint": "^10.8.0",
+    "eslint-plugin-storybook": "^10.5.10",
     "howler": "^2.2.4",
+    "playwright": "latest",
     "prettier": "^3.9.6",
     "sass": "^1.102.0",
-    "typescript": "^7.0.2",
-    "vite": "^8.2.0"
+    "storybook": "^10.5.10",
+    "typedoc": "^0.28.20",
+    "typedoc-plugin-markdown": "^4.12.0",
+    "typedoc-plugin-rename-defaults": "^0.7.3",
+    "typescript": "^6.0.3",
+    "vite": "^8.2.0",
+    "vitest": "latest"
   }
 }
