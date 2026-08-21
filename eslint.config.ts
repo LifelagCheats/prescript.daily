@@ -1,3 +1,5 @@
+import storybook from 'eslint-plugin-storybook';
+
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 import { defineConfig } from 'eslint/config';
@@ -14,10 +16,9 @@ export default defineConfig([
       '**/.git/**',
       '**/.vscode/**',
       '**/.vercel/**',
+      '**/scripts/**',
     ],
-  },
-
-  // --- YOUR CUSTOM RULES (only for these file types) ---
+  }, // --- YOUR CUSTOM RULES (only for these file types) ---
   {
     files: ['**/*.{js,mjs,cjs,ts,mts,cts}'],
     languageOptions: {
@@ -29,9 +30,8 @@ export default defineConfig([
       '@typescript-eslint/no-unused-vars': 'error',
       'no-console': 'error',
     },
-  },
-
-  // --- TYPESCRIPT RECOMMENDED RULES ---
+  }, // --- TYPESCRIPT RECOMMENDED RULES ---
   ...tseslint.configs.recommended,
   prettier,
+  ...storybook.configs['flat/recommended'],
 ]);
