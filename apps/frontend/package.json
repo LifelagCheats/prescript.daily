@@ -12,7 +12,8 @@
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc --noEmit",
     "astro": "astro",
-    "docs:typedoc": "typedoc && tsx scripts/generate-doc-index.ts",
+    "typedoc:md": "typedoc && tsx scripts/generate-doc-index.ts",
+    "typedoc:html": "typedoc --options typedoc.html.json",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build -o docs/storybook/"
   },

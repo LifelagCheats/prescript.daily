@@ -7,16 +7,17 @@ Browse the docs before actually doing something or after pulling the newest vers
 
 _mainly me trying out documentation tool to see what fits me best, if you consider this project's tooling to be excessive, it's because i'm trying things out_
 
-## 📖 API Reference
+## API Reference
 
 - [Typedoc API Reference](./typedoc/)
 
-## 🧩 Component Library
+## Component Library
 
 - [Storybook Component Library](./storybook/)
 
-## 🔧 Development
+## Development
 
-- See the [root README](/README.md)
 - See [CONTRIBUTING.md](/CONTRIBUTING.md)
 - See [DEVELOPMENT.md](/DEVELOPMENT.md)
+
+[better online docs](https://LifelagCheats.github.io/prescript.daily/)
