@@ -6,7 +6,7 @@
 
 > **handleError**(`error`): `Promise`\<`void`\>
 
-Defined in: [apps/frontend/src/lib/errorHandler.ts:18](https://github.com/LifelagCheats/prescript.daily/blob/0d92a4c0a9f1f05010a200d0de88d3f917e88815/apps/frontend/src/lib/errorHandler.ts#L18)
+Defined in: [apps/frontend/src/lib/errorHandler.ts:18](https://github.com/LifelagCheats/prescript.daily/blob/d39308c072353e430f7a5a216443ce86b40d1508/apps/frontend/src/lib/errorHandler.ts#L18)
 
 An async function responsible for sending errors to a discord webhook through an API endpoint.
 

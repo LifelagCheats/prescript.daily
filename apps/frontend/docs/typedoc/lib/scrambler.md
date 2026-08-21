@@ -6,7 +6,7 @@
 
 > **revealTextScramble**(`el`, `fromText`, `finalText`, `options?`, `globals?`, `controlState?`): `Promise`\<`void`\>
 
-Defined in: [apps/frontend/src/lib/scrambler.ts:64](https://github.com/LifelagCheats/prescript.daily/blob/0d92a4c0a9f1f05010a200d0de88d3f917e88815/apps/frontend/src/lib/scrambler.ts#L64)
+Defined in: [apps/frontend/src/lib/scrambler.ts:56](https://github.com/LifelagCheats/prescript.daily/blob/d39308c072353e430f7a5a216443ce86b40d1508/apps/frontend/src/lib/scrambler.ts#L56)
 
 A function that takes in an HTML element and modifies its text in a way that makes it have a scrambling animation
 
@@ -171,54 +171,6 @@ is going to be used. use anything else to describe a state of busyness.
 
 This function uses the blockChar as the 'default' until it is allowed to scramble the next letter,
 like ($# => █# => a█ => ab), acts as a cursor of sorts.
-
-#### Default Value
-
-```ts
-16
-```
-
-#### Default Value
-
-```ts
-'0123456789!█▒░ABCDEF?#@.$&'
-```
-
-#### Default Value
-
-```ts
-'█'
-```
-
-#### Default Value
-
-```ts
-0.045
-```
-
-#### Default Value
-
-```ts
-0.35
-```
-
-#### Default Value
-
-```ts
-0.35
-```
-
-#### Default Value
-
-```ts
-70
-```
-
-#### Default Value
-
-```ts
-false
-```
 
 #### Example
 

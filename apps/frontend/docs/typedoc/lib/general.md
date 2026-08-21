@@ -6,7 +6,7 @@
 
 > **randomInt**(`min`, `max`): `number`
 
-Defined in: [apps/frontend/src/lib/general.ts:16](https://github.com/LifelagCheats/prescript.daily/blob/0d92a4c0a9f1f05010a200d0de88d3f917e88815/apps/frontend/src/lib/general.ts#L16)
+Defined in: [apps/frontend/src/lib/general.ts:16](https://github.com/LifelagCheats/prescript.daily/blob/d39308c072353e430f7a5a216443ce86b40d1508/apps/frontend/src/lib/general.ts#L16)
 
 A simple function that return a random number between the given floor and ceiling
 

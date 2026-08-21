@@ -6,7 +6,7 @@
 
 > `const` **Authenticator**: `object`
 
-Defined in: [apps/frontend/src/lib/auth.ts:67](https://github.com/LifelagCheats/prescript.daily/blob/0d92a4c0a9f1f05010a200d0de88d3f917e88815/apps/frontend/src/lib/auth.ts#L67)
+Defined in: [apps/frontend/src/lib/auth.ts:67](https://github.com/LifelagCheats/prescript.daily/blob/d39308c072353e430f7a5a216443ce86b40d1508/apps/frontend/src/lib/auth.ts#L67)
 
 Authenticator is the API with which one interacts to authenticate the user.
 
@@ -46,7 +46,7 @@ const session = Authenticator.login('email@example.com', 'password')
 </td>
 <td>
 
-[apps/frontend/src/lib/auth.ts:80](https://github.com/LifelagCheats/prescript.daily/blob/0d92a4c0a9f1f05010a200d0de88d3f917e88815/apps/frontend/src/lib/auth.ts#L80)
+[apps/frontend/src/lib/auth.ts:80](https://github.com/LifelagCheats/prescript.daily/blob/d39308c072353e430f7a5a216443ce86b40d1508/apps/frontend/src/lib/auth.ts#L80)
 
 </td>
 </tr>
@@ -74,7 +74,7 @@ const newUser = await Authenticator.signUp('67onamerrychristmas', 'johnkaisen@em
 </td>
 <td>
 
-[apps/frontend/src/lib/auth.ts:97](https://github.com/LifelagCheats/prescript.daily/blob/0d92a4c0a9f1f05010a200d0de88d3f917e88815/apps/frontend/src/lib/auth.ts#L97)
+[apps/frontend/src/lib/auth.ts:97](https://github.com/LifelagCheats/prescript.daily/blob/d39308c072353e430f7a5a216443ce86b40d1508/apps/frontend/src/lib/auth.ts#L97)
 
 </td>
 </tr>
