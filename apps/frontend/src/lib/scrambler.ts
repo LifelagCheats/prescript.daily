@@ -15,15 +15,23 @@ import type { RevealElement, ScramblerGlobals, ScramblerOptions } from '@/types/
  * @param fromText - the starting text that's going to appear as the base from which the message is going to be 'scrambled' and revealed.
  * @param finalText - the final text that's going to be worked upon to reveal.
  * @param options - Optional configuration object. See {@link ScramblerOptions} for available options.
- * @param options.fps - frames per second, how many milliseconds until the function's allowed to execute its next change. Defaults to `16`.
- * @param options.scrambleChars - a string with a list of characters that can appear in the scrambling process randomly. Defaults to `'0123456789!█▒░ABCDEF?#@.$&'`.
- * @param options.blockChar - the default blockChar that's going to be used. Defaults to `'█'`.
- * @param options.revealSpeed - the speed at which each frame a letter is revealed. Defaults to `0.045`.
- * @param options.blockChance - the chance of the set block character actually appearing, it doesn't appear by default. Defaults to `0.35`.
- * @param options.beepChancePerFrame - the chance of the provided beep sound being played each frame. Defaults to `0.35`.
- * @param options.minBeepGapMs - if by chance, there would be two beeps played in a row, if the time specified by this parameter has not passed (in miliseconds), then it will not play. Defaults to `70`.
+ * @param options.fps - frames per second, how many milliseconds until the function's allowed to execute its next change.
+ * @defaultValue 16
+ * @param options.scrambleChars - a string with a list of characters that can appear in the scrambling process randomly.
+ * @defaultValue '0123456789!█▒░ABCDEF?#@.$&'
+ * @param options.blockChar - the default blockChar that's going to be used.
+ * @defaultValue '█'
+ * @param options.revealSpeed - the speed at which each frame a letter is revealed.
+ * @defaultValue 0.045
+ * @param options.blockChance - the chance of the set block character actually appearing, it doesn't appear by default.
+ * @defaultValue 0.35
+ * @param options.beepChancePerFrame - the chance of the provided beep sound being played each frame
+ * @defaultValue 0.35
+ * @param options.minBeepGapMs - if by chance, there would be two beeps played in a row, if the time specified by this parameter has not passed (in miliseconds), then it will not play.
+ * @defaultValue 70
  * @param globals - Optional configuration object, defines some additional settings. See {@link ScramblerGlobals} for available globals.
- * @param globals.audioUnlocked - boolean deciding if audio provided can actually even be played, false by default. Defaults to `false`.
+ * @param globals.audioUnlocked - boolean deciding if audio provided can actually even be played, false by default.
+ * @defaultValue false
  * @param globals.startBeep - the Howl instance that's going to play at the start of the scrambling sequence.
  * @param globals.Beep - Howl instance that's going to play as the specified beep sound when available.
  * @param globals.endBeep - Howl instance that's going to be played once the scrambling sequence ends.
