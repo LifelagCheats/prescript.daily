@@ -4,7 +4,7 @@
 
 ### AudioManager
 
-Defined in: [apps/frontend/src/lib/audio.ts:29](https://github.com/LifelagCheats/prescript.daily/blob/bb88f75dbd2fda6a878caf3e0d6b7e39852dc8ed/apps/frontend/src/lib/audio.ts#L29)
+Defined in: [apps/frontend/src/lib/audio.ts:29](https://github.com/LifelagCheats/prescript.daily/blob/b5544dfb961264afdd27a969ee64a2cd8f0409bb/apps/frontend/src/lib/audio.ts#L29)
 
 AudioManager is a singleton class responsible for managing shared audio instances across the application.
 
@@ -37,7 +37,7 @@ audio.completed.play();
 
 > **get** **beep**(): `Howl`
 
-Defined in: [apps/frontend/src/lib/audio.ts:68](https://github.com/LifelagCheats/prescript.daily/blob/bb88f75dbd2fda6a878caf3e0d6b7e39852dc8ed/apps/frontend/src/lib/audio.ts#L68)
+Defined in: [apps/frontend/src/lib/audio.ts:68](https://github.com/LifelagCheats/prescript.daily/blob/b5544dfb961264afdd27a969ee64a2cd8f0409bb/apps/frontend/src/lib/audio.ts#L68)
 
 Gets the `beep` audio instance (Howl) — lazy-loaded on first access.
 
@@ -64,7 +64,7 @@ The Howl instance for the beep sound.
 
 > **get** **start**(): `Howl`
 
-Defined in: [apps/frontend/src/lib/audio.ts:97](https://github.com/LifelagCheats/prescript.daily/blob/bb88f75dbd2fda6a878caf3e0d6b7e39852dc8ed/apps/frontend/src/lib/audio.ts#L97)
+Defined in: [apps/frontend/src/lib/audio.ts:97](https://github.com/LifelagCheats/prescript.daily/blob/b5544dfb961264afdd27a969ee64a2cd8f0409bb/apps/frontend/src/lib/audio.ts#L97)
 
 Gets the `start` audio instance (Howl) — lazy-loaded on first access.
 
@@ -91,7 +91,7 @@ The Howl instance for the start sound.
 
 > **get** **completed**(): `Howl`
 
-Defined in: [apps/frontend/src/lib/audio.ts:126](https://github.com/LifelagCheats/prescript.daily/blob/bb88f75dbd2fda6a878caf3e0d6b7e39852dc8ed/apps/frontend/src/lib/audio.ts#L126)
+Defined in: [apps/frontend/src/lib/audio.ts:126](https://github.com/LifelagCheats/prescript.daily/blob/b5544dfb961264afdd27a969ee64a2cd8f0409bb/apps/frontend/src/lib/audio.ts#L126)
 
 Gets the `completed` audio instance (Howl) — lazy-loaded on first access.
 
@@ -118,7 +118,7 @@ The Howl instance for the completed sound.
 
 > `static` **getInstance**(): [`AudioManager`](#audiomanager)
 
-Defined in: [apps/frontend/src/lib/audio.ts:47](https://github.com/LifelagCheats/prescript.daily/blob/bb88f75dbd2fda6a878caf3e0d6b7e39852dc8ed/apps/frontend/src/lib/audio.ts#L47)
+Defined in: [apps/frontend/src/lib/audio.ts:47](https://github.com/LifelagCheats/prescript.daily/blob/b5544dfb961264afdd27a969ee64a2cd8f0409bb/apps/frontend/src/lib/audio.ts#L47)
 
 Returns the singleton instance of AudioManager.
 
@@ -140,7 +140,7 @@ const audioManager = AudioManager.getInstance();
 
 > `const` **audio**: [`AudioManager`](#audiomanager)
 
-Defined in: [apps/frontend/src/lib/audio.ts:154](https://github.com/LifelagCheats/prescript.daily/blob/bb88f75dbd2fda6a878caf3e0d6b7e39852dc8ed/apps/frontend/src/lib/audio.ts#L154)
+Defined in: [apps/frontend/src/lib/audio.ts:154](https://github.com/LifelagCheats/prescript.daily/blob/b5544dfb961264afdd27a969ee64a2cd8f0409bb/apps/frontend/src/lib/audio.ts#L154)
 
 The shared audio instance that can be used anywhere in the application.
 

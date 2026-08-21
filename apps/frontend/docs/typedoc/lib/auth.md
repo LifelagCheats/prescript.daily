@@ -6,7 +6,7 @@
 
 > `const` **Authenticator**: `object`
 
-Defined in: [apps/frontend/src/lib/auth.ts:67](https://github.com/LifelagCheats/prescript.daily/blob/bb88f75dbd2fda6a878caf3e0d6b7e39852dc8ed/apps/frontend/src/lib/auth.ts#L67)
+Defined in: [apps/frontend/src/lib/auth.ts:67](https://github.com/LifelagCheats/prescript.daily/blob/b5544dfb961264afdd27a969ee64a2cd8f0409bb/apps/frontend/src/lib/auth.ts#L67)
 
 Authenticator is the API with which one interacts to authenticate the user.
 
@@ -41,7 +41,7 @@ the authenticated user's session data, if successful
 ###### Example
 
 ```ts
-const session = Authenticator.login('email@example.com', 'password');
+const session = Authenticator.login('email@example.com', 'password')
 ```
 
 ##### signUp()
@@ -79,11 +79,7 @@ The newly created user session data.
 ###### Example
 
 ```ts
-const newUser = await Authenticator.signUp(
-  '67onamerrychristmas',
-  'johnkaisen@email.com',
-  'password',
-);
+const newUser = await Authenticator.signUp('67onamerrychristmas', 'johnkaisen@email.com', 'password');
 ```
 
 #### Remarks

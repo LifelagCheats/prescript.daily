@@ -6,7 +6,7 @@
 
 > **randomInt**(`min`, `max`): `number`
 
-Defined in: [apps/frontend/src/lib/general.ts:16](https://github.com/LifelagCheats/prescript.daily/blob/bb88f75dbd2fda6a878caf3e0d6b7e39852dc8ed/apps/frontend/src/lib/general.ts#L16)
+Defined in: [apps/frontend/src/lib/general.ts:16](https://github.com/LifelagCheats/prescript.daily/blob/b5544dfb961264afdd27a969ee64a2cd8f0409bb/apps/frontend/src/lib/general.ts#L16)
 
 A simple function that return a random number between the given floor and ceiling
 
@@ -33,7 +33,7 @@ a number between the given minimum and maximum (inclusive meaning it can be the 
 #### Example
 
 ```ts
-let num: number = randomInt(1, 1); // num = 1
-num = randomInt(99, 9123919312); // a number between those two
-num = randomInt(2, 1); // will error if maximum is lower than minimum
+let num: number = randomInt(1, 1) // num = 1
+num = randomInt(99, 9123919312) // a number between those two
+num = randomInt(2, 1) // will error if maximum is lower than minimum
 ```

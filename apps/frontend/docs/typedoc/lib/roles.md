@@ -6,7 +6,7 @@
 
 > **getRole**(`Pcompleted`): [`Rank`](../types/rank.md#rank) \| `undefined`
 
-Defined in: [apps/frontend/src/lib/roles.ts:34](https://github.com/LifelagCheats/prescript.daily/blob/bb88f75dbd2fda6a878caf3e0d6b7e39852dc8ed/apps/frontend/src/lib/roles.ts#L34)
+Defined in: [apps/frontend/src/lib/roles.ts:34](https://github.com/LifelagCheats/prescript.daily/blob/b5544dfb961264afdd27a969ee64a2cd8f0409bb/apps/frontend/src/lib/roles.ts#L34)
 
 Function responsible for returning the user's current rank/role (however you call it).
 
@@ -31,17 +31,17 @@ compares the number of given prescripts to identify the rank sitting in between 
 #### Example
 
 ```ts
-const currentRole: Rank = getRole(13); // returns a Rank object with the name Proselyte.
-const Role1: Rank = getRole(26); // returns 'Proxy'.
+const currentRole: Rank = getRole(13) // returns a Rank object with the name Proselyte.
+const Role1: Rank = getRole(26) // returns 'Proxy'.
 ```
 
----
+***
 
 ### nextRole()
 
 > **nextRole**(`rank`): [`Rank`](../types/rank.md#rank)
 
-Defined in: [apps/frontend/src/lib/roles.ts:55](https://github.com/LifelagCheats/prescript.daily/blob/bb88f75dbd2fda6a878caf3e0d6b7e39852dc8ed/apps/frontend/src/lib/roles.ts#L55)
+Defined in: [apps/frontend/src/lib/roles.ts:55](https://github.com/LifelagCheats/prescript.daily/blob/b5544dfb961264afdd27a969ee64a2cd8f0409bb/apps/frontend/src/lib/roles.ts#L55)
 
 Function responsible for returning the rank right after the user's current.
 
@@ -67,6 +67,6 @@ and adding 1 to its index.
 #### Example
 
 ```ts
-const nextRole: Rank = nextRole(13); // returns a Rank object with the name 'Proxy'.
-const Role2: Rank = nextRole(26); // returns 'Messenger'.
+const nextRole: Rank = nextRole(13) // returns a Rank object with the name 'Proxy'.
+const Role2: Rank = nextRole(26) // returns 'Messenger'.
 ```

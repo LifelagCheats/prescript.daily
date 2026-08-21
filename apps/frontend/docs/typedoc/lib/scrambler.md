@@ -4,9 +4,9 @@
 
 ### revealTextScramble()
 
-> **revealTextScramble**(`el`, `fromText`, `finalText`, `options?`, `globals?`, `controlState?`): `Promise`\<`void`>\>
+> **revealTextScramble**(`el`, `fromText`, `finalText`, `options?`, `globals?`, `controlState?`): `Promise`\<`void`\>
 
-Defined in: [apps/frontend/src/lib/scrambler.ts:64](https://github.com/LifelagCheats/prescript.daily/blob/bb88f75dbd2fda6a878caf3e0d6b7e39852dc8ed/apps/frontend/src/lib/scrambler.ts#L64)
+Defined in: [apps/frontend/src/lib/scrambler.ts:64](https://github.com/LifelagCheats/prescript.daily/blob/b5544dfb961264afdd27a969ee64a2cd8f0409bb/apps/frontend/src/lib/scrambler.ts#L64)
 
 A function that takes in an HTML element and modifies its text in a way that makes it have a scrambling animation
 
@@ -66,49 +66,49 @@ like ($# => █# => a█ => ab), acts as a cursor of sorts.
 #### Default Value
 
 ```ts
-16;
+16
 ```
 
 #### Default Value
 
 ```ts
-'0123456789!█▒░ABCDEF?#@.$&';
+'0123456789!█▒░ABCDEF?#@.$&'
 ```
 
 #### Default Value
 
 ```ts
-'█';
+'█'
 ```
 
 #### Default Value
 
 ```ts
-0.045;
+0.045
 ```
 
 #### Default Value
 
 ```ts
-0.35;
+0.35
 ```
 
 #### Default Value
 
 ```ts
-0.35;
+0.35
 ```
 
 #### Default Value
 
 ```ts
-70;
+70
 ```
 
 #### Default Value
 
 ```ts
-false;
+false
 ```
 
 #### Example

@@ -47,6 +47,7 @@ export interface ScramblerGlobals {
  * @property __revealTimer - time between each reveal sequence done by the function, attached directly to the element.
  *
  * @see {@link lib/scrambler.revealTextScramble}
+ * @noInheritDoc
  */
 export interface RevealElement extends HTMLElement {
   __revealTimer?: ReturnType<typeof setInterval> | null;

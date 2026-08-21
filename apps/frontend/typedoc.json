@@ -2,8 +2,17 @@
   "entryPoints": ["./src/lib", "./src/types"],
   "entryPointStrategy": "expand",
   "out": "./docs/typedoc",
-  "plugin": ["typedoc-plugin-markdown", "typedoc-plugin-rename-defaults"],
+  "plugin": [
+    "typedoc-plugin-markdown",
+    "typedoc-plugin-rename-defaults",
+    "typedoc-plugin-no-inherit"
+  ],
   "readme": "templates/typedoc_index.md",
+  "interfacePropertiesFormat": "table",
+  "parametersFormat": "table",
+  "classPropertiesFormat": "table",
+  "enumMembersFormat": "table",
+  "typeDeclarationFormat": "table",
   "excludePrivate": true,
   "excludeProtected": true,
   "excludeInternal": true,
