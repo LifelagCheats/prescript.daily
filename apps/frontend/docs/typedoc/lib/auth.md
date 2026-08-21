@@ -6,81 +6,80 @@
 
 > `const` **Authenticator**: `object`
 
-Defined in: [apps/frontend/src/lib/auth.ts:67](https://github.com/LifelagCheats/prescript.daily/blob/b5544dfb961264afdd27a969ee64a2cd8f0409bb/apps/frontend/src/lib/auth.ts#L67)
+Defined in: [apps/frontend/src/lib/auth.ts:67](https://github.com/LifelagCheats/prescript.daily/blob/0d92a4c0a9f1f05010a200d0de88d3f917e88815/apps/frontend/src/lib/auth.ts#L67)
 
 Authenticator is the API with which one interacts to authenticate the user.
 
 #### Type Declaration
 
-##### login()
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Defined in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
 
-> **login**(`email`, `password`): `Promise`\<\{ `user`: `User` \| `null`; `session`: `Session` \| `null`; \}\>
+`login()`
+
+</td>
+<td>
+
+(`email`, `password`) => `Promise`\<\{ `user`: `User` \| `null`; `session`: `Session` \| `null`; \}\>
+
+</td>
+<td>
 
 Logs into an existing user's account
 
-###### Parameters
-
-###### email
-
-`` `${string}@${string}.${string}` ``
-
-the user's email address
-
-###### password
-
-`string`
-
-the user's password
-
-###### Returns
-
-`Promise`\<\{ `user`: `User` \| `null`; `session`: `Session` \| `null`; \}\>
-
-the authenticated user's session data, if successful
-
-###### Example
+**Example**
 
 ```ts
 const session = Authenticator.login('email@example.com', 'password')
 ```
 
-##### signUp()
+</td>
+<td>
 
-> **signUp**(`username`, `email`, `password`): `Promise`\<\{ `user`: `User` \| `null`; `session`: `Session` \| `null`; \}\>
+[apps/frontend/src/lib/auth.ts:80](https://github.com/LifelagCheats/prescript.daily/blob/0d92a4c0a9f1f05010a200d0de88d3f917e88815/apps/frontend/src/lib/auth.ts#L80)
+
+</td>
+</tr>
+<tr>
+<td>
+
+`signUp()`
+
+</td>
+<td>
+
+(`username`, `email`, `password`) => `Promise`\<\{ `user`: `User` \| `null`; `session`: `Session` \| `null`; \}\>
+
+</td>
+<td>
 
 Registers a new user.
 
-###### Parameters
-
-###### username
-
-`string`
-
-The user's chosen username.
-
-###### email
-
-`` `${string}@${string}.${string}` ``
-
-The user's email address.
-
-###### password
-
-`string`
-
-The user's chosen password.
-
-###### Returns
-
-`Promise`\<\{ `user`: `User` \| `null`; `session`: `Session` \| `null`; \}\>
-
-The newly created user session data.
-
-###### Example
+**Example**
 
 ```ts
 const newUser = await Authenticator.signUp('67onamerrychristmas', 'johnkaisen@email.com', 'password');
 ```
+
+</td>
+<td>
+
+[apps/frontend/src/lib/auth.ts:97](https://github.com/LifelagCheats/prescript.daily/blob/0d92a4c0a9f1f05010a200d0de88d3f917e88815/apps/frontend/src/lib/auth.ts#L97)
+
+</td>
+</tr>
+</tbody>
+</table>
 
 #### Remarks
 

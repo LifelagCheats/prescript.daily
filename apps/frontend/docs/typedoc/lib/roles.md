@@ -6,17 +6,40 @@
 
 > **getRole**(`Pcompleted`): [`Rank`](../types/rank.md#rank) \| `undefined`
 
-Defined in: [apps/frontend/src/lib/roles.ts:34](https://github.com/LifelagCheats/prescript.daily/blob/b5544dfb961264afdd27a969ee64a2cd8f0409bb/apps/frontend/src/lib/roles.ts#L34)
+Defined in: [apps/frontend/src/lib/roles.ts:34](https://github.com/LifelagCheats/prescript.daily/blob/0d92a4c0a9f1f05010a200d0de88d3f917e88815/apps/frontend/src/lib/roles.ts#L34)
 
 Function responsible for returning the user's current rank/role (however you call it).
 
 #### Parameters
 
-##### Pcompleted
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+
+`Pcompleted`
+
+</td>
+<td>
 
 `number`
 
+</td>
+<td>
+
 takes in the number of completed prescripts as a whole integer.
+
+</td>
+</tr>
+</tbody>
+</table>
 
 #### Returns
 
@@ -41,17 +64,40 @@ const Role1: Rank = getRole(26) // returns 'Proxy'.
 
 > **nextRole**(`rank`): [`Rank`](../types/rank.md#rank)
 
-Defined in: [apps/frontend/src/lib/roles.ts:55](https://github.com/LifelagCheats/prescript.daily/blob/b5544dfb961264afdd27a969ee64a2cd8f0409bb/apps/frontend/src/lib/roles.ts#L55)
+Defined in: [apps/frontend/src/lib/roles.ts:55](https://github.com/LifelagCheats/prescript.daily/blob/0d92a4c0a9f1f05010a200d0de88d3f917e88815/apps/frontend/src/lib/roles.ts#L55)
 
 Function responsible for returning the rank right after the user's current.
 
 #### Parameters
 
-##### rank
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+
+`rank`
+
+</td>
+<td>
 
 `string`
 
+</td>
+<td>
+
 the name property of the current rank to be used to determine the next one.
+
+</td>
+</tr>
+</tbody>
+</table>
 
 #### Returns
 

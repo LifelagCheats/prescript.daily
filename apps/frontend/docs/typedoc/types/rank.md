@@ -4,24 +4,65 @@
 
 ### Rank
 
-Defined in: [apps/frontend/src/types/rank.d.ts:7](https://github.com/LifelagCheats/prescript.daily/blob/b5544dfb961264afdd27a969ee64a2cd8f0409bb/apps/frontend/src/types/rank.d.ts#L7)
+Defined in: [apps/frontend/src/types/rank.d.ts:7](https://github.com/LifelagCheats/prescript.daily/blob/0d92a4c0a9f1f05010a200d0de88d3f917e88815/apps/frontend/src/types/rank.d.ts#L7)
 
 Represents the user's rank in the system.
 
 #### Properties
 
-##### name
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Defined in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
 
-> **name**: `string`
+<a id="property-name"></a> `name`
 
-Defined in: [apps/frontend/src/types/rank.d.ts:8](https://github.com/LifelagCheats/prescript.daily/blob/b5544dfb961264afdd27a969ee64a2cd8f0409bb/apps/frontend/src/types/rank.d.ts#L8)
+</td>
+<td>
+
+`string`
+
+</td>
+<td>
 
 the name of the rank.
 
-##### Pcompleted
+</td>
+<td>
 
-> **Pcompleted**: `number`
+[apps/frontend/src/types/rank.d.ts:8](https://github.com/LifelagCheats/prescript.daily/blob/0d92a4c0a9f1f05010a200d0de88d3f917e88815/apps/frontend/src/types/rank.d.ts#L8)
 
-Defined in: [apps/frontend/src/types/rank.d.ts:9](https://github.com/LifelagCheats/prescript.daily/blob/b5544dfb961264afdd27a969ee64a2cd8f0409bb/apps/frontend/src/types/rank.d.ts#L9)
+</td>
+</tr>
+<tr>
+<td>
+
+<a id="property-pcompleted"></a> `Pcompleted`
+
+</td>
+<td>
+
+`number`
+
+</td>
+<td>
 
 the minimum amount of completed prescripts needed to be in this rank, its 'floor'.
+
+</td>
+<td>
+
+[apps/frontend/src/types/rank.d.ts:9](https://github.com/LifelagCheats/prescript.daily/blob/0d92a4c0a9f1f05010a200d0de88d3f917e88815/apps/frontend/src/types/rank.d.ts#L9)
+
+</td>
+</tr>
+</tbody>
+</table>

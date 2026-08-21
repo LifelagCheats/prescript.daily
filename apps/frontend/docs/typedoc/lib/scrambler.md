@@ -6,47 +6,156 @@
 
 > **revealTextScramble**(`el`, `fromText`, `finalText`, `options?`, `globals?`, `controlState?`): `Promise`\<`void`\>
 
-Defined in: [apps/frontend/src/lib/scrambler.ts:64](https://github.com/LifelagCheats/prescript.daily/blob/b5544dfb961264afdd27a969ee64a2cd8f0409bb/apps/frontend/src/lib/scrambler.ts#L64)
+Defined in: [apps/frontend/src/lib/scrambler.ts:64](https://github.com/LifelagCheats/prescript.daily/blob/0d92a4c0a9f1f05010a200d0de88d3f917e88815/apps/frontend/src/lib/scrambler.ts#L64)
 
 A function that takes in an HTML element and modifies its text in a way that makes it have a scrambling animation
 
 #### Parameters
 
-##### el
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+
+`el`
+
+</td>
+<td>
 
 [`RevealElement`](../types/scrambler.md#revealelement)
 
+</td>
+<td>
+
+`undefined`
+
+</td>
+<td>
+
 the Element that's going to be modified. special type with the __revealTimer property. See [RevealElement](../types/scrambler.md#revealelement).
 
-##### fromText
+</td>
+</tr>
+<tr>
+<td>
+
+`fromText`
+
+</td>
+<td>
 
 `string`
+
+</td>
+<td>
+
+`undefined`
+
+</td>
+<td>
 
 the starting text that's going to appear as the base from which the message is going to be 'scrambled' and revealed.
 
-##### finalText
+</td>
+</tr>
+<tr>
+<td>
+
+`finalText`
+
+</td>
+<td>
 
 `string`
 
+</td>
+<td>
+
+`undefined`
+
+</td>
+<td>
+
 the final text that's going to be worked upon to reveal.
 
-##### options?
+</td>
+</tr>
+<tr>
+<td>
 
-[`ScramblerOptions`](../types/scrambler.md#scrambleroptions) = `{}`
+`options`
+
+</td>
+<td>
+
+[`ScramblerOptions`](../types/scrambler.md#scrambleroptions)
+
+</td>
+<td>
+
+`{}`
+
+</td>
+<td>
 
 Optional configuration object. See [ScramblerOptions](../types/scrambler.md#scrambleroptions) for available options.
 
-##### globals?
+</td>
+</tr>
+<tr>
+<td>
 
-[`ScramblerGlobals`](../types/scrambler.md#scramblerglobals) = `...`
+`globals`
+
+</td>
+<td>
+
+[`ScramblerGlobals`](../types/scrambler.md#scramblerglobals)
+
+</td>
+<td>
+
+`...`
+
+</td>
+<td>
 
 Optional configuration object, defines some additional settings. See [ScramblerGlobals](../types/scrambler.md#scramblerglobals) for available globals.
 
-##### controlState?
+</td>
+</tr>
+<tr>
+<td>
 
-`boolean` = `true`
+`controlState`
+
+</td>
+<td>
+
+`boolean`
+
+</td>
+<td>
+
+`true`
+
+</td>
+<td>
 
 dictates whether the function itself controls the appliance and removal of the 'busy' class in the element it's editing. true by default.
+
+</td>
+</tr>
+</tbody>
+</table>
 
 #### Returns
 
