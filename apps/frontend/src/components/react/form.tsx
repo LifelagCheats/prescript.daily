@@ -1,5 +1,7 @@
-import Authenticator from '@/lib/auth';
+import Authenticator, { LoginError } from '@/lib/auth';
+import { toast } from '@/lib/toast';
 import type { Email } from '@/types/login';
+import '@styles/sass/form.scss';
 
 export function SignInForm() {
   const handleSignIn = async (e: React.SubmitEvent<HTMLFormElement>) => {
@@ -10,19 +12,17 @@ export function SignInForm() {
     const password = formData.get('password') as string;
     const username = formData.get('username') as string;
 
-    console.log(formData);
-    console.log(email);
-    console.log(password);
-    console.log(username);
-
     const signup = await Authenticator.signUp(username, email, password);
 
     if (signup) {
       console.log('successfully Signed up');
-      console.log(signup);
+      toast.add('Welcome to the Index, Proselyte.');
     } else if (!signup) {
+      toast.add('Account creation failed');
       throw new Error('Account creation failed');
     }
+
+    window.location.reload();
   };
 
   return (
@@ -78,13 +78,26 @@ export function LogInForm() {
     const email = formData.get('email') as Email;
     const password = formData.get('password') as string;
 
-    const login = await Authenticator.login(email, password);
+    try {
+      const login = await Authenticator.login(email, password);
 
-    if (login) {
-      console.log('successfully logged in');
-    } else if (!login) {
-      throw new Error('Failed Login');
+      if (login) {
+        console.log('successfully logged in');
+        toast.add('Successfully logged in');
+      } else if (!login) {
+        toast.add('Failed login');
+        throw new Error('Failed Login');
+      }
+    } catch (error) {
+      if (error instanceof LoginError) {
+        toast.add(error.message);
+        return;
+      }
+      console.log(error);
+      return;
     }
+
+    window.location.reload();
   };
 
   return (
