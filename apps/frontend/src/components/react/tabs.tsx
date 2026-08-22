@@ -2,6 +2,7 @@ import * as TabsPrimitive from '@radix-ui/react-tabs';
 import { useRef } from 'react';
 import gsap from 'gsap';
 import { SignInForm, LogInForm } from '@components/react/form';
+import '@styles/sass/tabs.scss';
 
 export default function Tabs() {
   const contentRefs = {

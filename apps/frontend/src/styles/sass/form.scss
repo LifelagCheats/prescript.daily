@@ -25,24 +25,33 @@ $breakpoint-md: 768px;
   background: #0f1010;
   font-family: firacode;
   position: absolute;
-  display: table;
-  right: 5rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  right: 15rem;
+  transform: translateX(50%);
 
   color: #d9dbda;
 
-  width: 5rem;
+  width: 0;
+  min-width: 0;
   height: 20.9rem;
+  min-height: 20.9rem;
 
   bottom: 5rem;
 
-  padding: 2rem;
+  padding: 0rem;
 
   border-radius: 0.7rem;
 
-  transition: all 0.2666 ease-in-out;
+  transition:
+    width 0.3s ease,
+    padding 0.2666s ease;
+  overflow: hidden;
 
-  &.hidden {
-    transform: translateX(30rem);
+  &.open {
+    width: 18rem;
+    padding: 2rem;
   }
 }
 
@@ -109,7 +118,6 @@ $breakpoint-md: 768px;
 
 label,
 input {
-  display: table-cell;
   margin-bottom: 0.65rem;
 }
 

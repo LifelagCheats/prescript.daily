@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { createBrowserClient } from '@lib/supabase';
 import { nextRole, getRole } from '@lib/roles';
+import '@styles/sass/progressbar.scss';
 
 type Props = {
   floor: number;

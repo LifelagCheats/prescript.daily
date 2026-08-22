@@ -1,4 +1,6 @@
 import CountUp from '@components/react/counter';
+import Skeleton from '@components/react/skeleton';
+import '@styles/sass/counter.scss';
 import { createBrowserClient } from '@lib/supabase';
 import { useEffect, useState } from 'react';
 

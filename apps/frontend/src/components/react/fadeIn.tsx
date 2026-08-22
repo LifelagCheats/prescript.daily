@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import '@styles/sass/fadeIn.scss';
 
 type Props = {
   children: React.ReactNode;
