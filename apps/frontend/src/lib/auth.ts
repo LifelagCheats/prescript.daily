@@ -2,6 +2,26 @@ import type { Email } from '@/types/login';
 import { createBrowserClient } from '@lib/supabase';
 
 /**
+ * LoginError represents an authentication error.
+ *
+ * Used to identify authentication-related failures separately from
+ * other application errors.
+ *
+ * @extends Error
+ */
+export class LoginError extends Error {
+  /**
+   * Creates a new LoginError.
+   *
+   * @param message - A human-readable description of the error.
+   */
+  constructor(message: string) {
+    super(message);
+    this.name = 'LoginError';
+  }
+}
+
+/**
  * Authenticate is an async function responsible for sending requests to Supabase Auth to log in or sign up the user depending on the mode selected.
  *
  * @remarks
@@ -43,7 +63,7 @@ async function authenticate(
         });
 
   if (error) {
-    throw new Error(error?.message ?? 'An unknown error occurred');
+    throw new LoginError(error?.message ?? 'An unknown error occurred');
   }
 
   return data;
