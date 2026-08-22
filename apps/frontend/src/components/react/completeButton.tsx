@@ -1,14 +1,17 @@
 import { audio } from '@/lib/audio';
 import Scramble from '@lib/scrambler';
 import { createBrowserClient } from '@lib/supabase';
+import { waitForElement } from '@lib/dom';
 
 type Props = {
   user_id: string;
 };
 
-const PrescriptContainer: HTMLElement | null = document.querySelector('.Prescript');
-
-async function Complete(prescript: number, user_id: string) {
+async function Complete(
+  prescript: number,
+  user_id: string,
+  PrescriptContainer: HTMLElement | null,
+) {
   const supabase = createBrowserClient();
 
   const { data: confirmation } = await supabase
@@ -57,8 +60,10 @@ export default function CompleteButton({ user_id }: Props) {
   return (
     <div
       className="CompleteButton"
-      onClick={() => {
-        const prescript = Number(document.querySelector('.Prescript')?.getAttribute('data-id'));
+      onClick={async () => {
+        const PrescriptContainer: HTMLElement | null =
+          await waitForElement<HTMLElement>('.Prescript');
+        const prescript = Number(PrescriptContainer?.getAttribute('data-id'));
 
         if (!prescript) {
           if (PrescriptContainer) {
@@ -76,7 +81,7 @@ export default function CompleteButton({ user_id }: Props) {
           return;
         }
 
-        Complete(prescript, user_id);
+        Complete(prescript, user_id, PrescriptContainer);
       }}
     >
       <span>Complete</span>

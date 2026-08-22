@@ -1,10 +1,9 @@
 import { createBrowserClient } from '@/lib/supabase';
 import Scramble from '@/lib/scrambler';
 import { audio } from '@/lib/audio';
+import { waitForElement } from '@lib/dom';
 
-const PrescriptContainer: HTMLElement | null = document.querySelector('.Prescript');
-
-async function Fail() {
+async function Fail(PrescriptContainer: HTMLElement | null) {
   const supabase = createBrowserClient();
 
   await supabase.rpc('failed');
@@ -28,7 +27,9 @@ export default function FailButton() {
     <div
       className="FailButton"
       onClick={async () => {
-        const prescript = Number(document.querySelector('.Prescript')?.getAttribute('data-id'));
+        const PrescriptContainer: HTMLElement | null =
+          await waitForElement<HTMLElement>('.Prescript');
+        const prescript = Number(PrescriptContainer?.getAttribute('data-id'));
 
         if (!prescript) {
           if (PrescriptContainer) {
@@ -46,7 +47,7 @@ export default function FailButton() {
           return;
         }
 
-        Fail();
+        Fail(PrescriptContainer);
       }}
     >
       <span>Fail</span>

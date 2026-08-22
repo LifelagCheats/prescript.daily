@@ -13,77 +13,82 @@ import type { Prescript } from '@/types/scrambler';
 import randomInt from '@lib/general';
 import Scramble from '@lib/scrambler';
 import { audio } from '@/lib/audio';
+import { waitForElement } from '@lib/dom';
 
-const supabase = createBrowserClient();
+document.addEventListener('DOMContentLoaded', async () => {
+  const supabase = createBrowserClient();
 
-const button: HTMLElement | null = document.querySelector('.PrescriptButton');
-const prescript: HTMLElement | null = document.querySelector('.Prescript');
+  const [button, prescript] = await Promise.all([
+    waitForElement<HTMLElement>('.PrescriptButton'),
+    waitForElement<HTMLElement>('.Prescript'),
+  ]);
 
-const { data: session } = await supabase.auth.getUser();
+  const { data: session } = await supabase.auth.getUser();
 
-if (!session) {
-  throw new Error('Not signed in');
-}
+  if (!session) {
+    throw new Error('Not signed in');
+  }
 
-async function countPrescripts() {
-  const encountered = await supabase
-    .from('profiles')
-    .select('user_id, encountered')
-    .eq('user_id', session?.user?.id)
-    .single();
+  async function countPrescripts() {
+    const encountered = await supabase
+      .from('profiles')
+      .select('user_id, encountered')
+      .eq('user_id', session?.user?.id)
+      .single();
 
-  return encountered;
-}
+    return encountered;
+  }
 
-const cache = await countPrescripts();
-let cachedIds: number[] = cache?.data?.encountered;
-localStorage.setItem('cachedIds', JSON.stringify(cachedIds));
+  const cache = await countPrescripts();
+  let cachedIds: number[] = cache?.data?.encountered;
+  localStorage.setItem('cachedIds', JSON.stringify(cachedIds));
 
-if (prescript) {
-  button?.addEventListener('click', async () => {
-    try {
-      if (!prescript.classList.contains('busy')) {
-        prescript.classList.add('busy');
-        const query = supabase
-          .from('Prescripts')
-          .select('id, instruction')
-          .order('id', { ascending: false });
+  if (prescript) {
+    button?.addEventListener('click', async () => {
+      try {
+        if (!prescript.classList.contains('busy')) {
+          prescript.classList.add('busy');
+          const query = supabase
+            .from('Prescripts')
+            .select('id, instruction')
+            .order('id', { ascending: false });
 
-        if (cachedIds && cachedIds.length > 0) {
-          query.not('id', 'in', `(${cachedIds.join(',')})`);
+          if (cachedIds && cachedIds.length > 0) {
+            query.not('id', 'in', `(${cachedIds.join(',')})`);
+          }
+
+          const { data: slips } = await query;
+
+          if (!slips || slips.length === 0 || !prescript) return;
+
+          const slip: Prescript = slips[randomInt(0, slips.length - 1)];
+
+          prescript.dataset.id = String(slip.id);
+
+          await Scramble(
+            prescript,
+            '',
+            slip.instruction,
+            {},
+            {
+              audioUnlocked: true,
+              startBeep: audio.start,
+              Beep: audio.beep,
+            },
+            false,
+          );
+
+          await supabase.rpc('add_encountered', {
+            prescript: Number(slip.id),
+          });
+
+          const cache = await countPrescripts();
+          cachedIds = cache?.data?.encountered;
+          localStorage.setItem('cachedIds', JSON.stringify(cachedIds));
         }
-
-        const { data: slips } = await query;
-
-        if (!slips || slips.length === 0 || !prescript) return;
-
-        const slip: Prescript = slips[randomInt(0, slips.length - 1)];
-
-        prescript.dataset.id = String(slip.id);
-
-        await Scramble(
-          prescript,
-          '',
-          slip.instruction,
-          {},
-          {
-            audioUnlocked: true,
-            startBeep: audio.start,
-            Beep: audio.beep,
-          },
-          false,
-        );
-
-        await supabase.rpc('add_encountered', {
-          prescript: Number(slip.id),
-        });
-
-        const cache = await countPrescripts();
-        cachedIds = cache?.data?.encountered;
-        localStorage.setItem('cachedIds', JSON.stringify(cachedIds));
+      } catch (error) {
+        await handleError(error);
       }
-    } catch (error) {
-      await handleError(error);
-    }
-  });
-}
+    });
+  }
+});
