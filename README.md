@@ -7,4 +7,4 @@
 </div>
 
 > [!NOTE]
-> the code on this website is inspired on the code of beyond's respective prescript website, credits to him (visit at https://nyos.dev/prescript)!
+> the code on this website is inspired on the code of beyond's respective prescript website, credits to them (visit at https://nyos.dev/prescript)!
