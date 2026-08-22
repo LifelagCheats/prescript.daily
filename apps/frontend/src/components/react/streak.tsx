@@ -2,23 +2,40 @@ import CountUp from '@components/react/counter';
 import Skeleton from '@components/react/skeleton';
 import '@styles/sass/counter.scss';
 import { createBrowserClient } from '@lib/supabase';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 type Props = {
   streak: number;
 };
 
 const supabase = createBrowserClient();
-const {
-  data: { user },
-} = await supabase.auth.getUser();
-const session = user?.id;
-
-console.log(user);
-console.log(session);
 
 export default function StreakCounter({ streak }: Props) {
   const [currentStreak, setStreak] = useState(streak);
+  const [session, setSession] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [updating, setUpdate] = useState(false);
+
+  const handleStart = useCallback(() => {
+    setLoading(false);
+    setUpdate(true);
+  }, []);
+
+  const handleEnd = useCallback(() => {
+    setUpdate(false);
+  }, []);
+
+  useEffect(() => {
+    async function getUser() {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+
+      setSession(user?.id ?? null);
+    }
+
+    getUser();
+  }, []);
 
   useEffect(() => {
     if (!session) return;
@@ -34,11 +51,13 @@ export default function StreakCounter({ streak }: Props) {
           schema: 'public',
           table: 'profiles',
           filter: `user_id=eq.${session}`,
+          select: ['id', 'streak'],
         },
         (payload) => {
-          console.log('STREAK CHANGED', payload.new.streak);
-
-          setStreak(payload.new.streak);
+          if (payload.old.streak !== payload.new.streak) {
+            setLoading(true);
+            setStreak(payload.new.streak);
+          }
         },
       )
       .subscribe((status) => {
@@ -54,7 +73,18 @@ export default function StreakCounter({ streak }: Props) {
     <span className="Streak" id="Streak">
       Streak{' '}
       <span className="Counter">
-        <CountUp from={0} to={currentStreak} separator="," direction="up" />
+        <Skeleton loading={loading}>
+          <CountUp
+            from={0}
+            to={currentStreak}
+            duration={0.95}
+            separator=","
+            direction="up"
+            onStart={handleStart}
+            onEnd={handleEnd}
+            className={`Counter ${updating ? 'updating' : ''}`}
+          />
+        </Skeleton>
       </span>
     </span>
   );
