@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import Counter from '../counter';
+import Counter from '@components/react/counter';
 
 const meta: Meta<typeof Counter> = {
   title: 'Components/Counter',

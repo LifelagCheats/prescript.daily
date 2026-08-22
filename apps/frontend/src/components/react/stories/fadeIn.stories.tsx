@@ -1,5 +1,5 @@
 import type { StoryObj, Meta } from '@storybook/react-vite';
-import FadeIn from '../fadeIn';
+import FadeIn from '@components/react/fadeIn';
 import './styles/fadeIn.scss';
 
 const meta: Meta<typeof FadeIn> = {
