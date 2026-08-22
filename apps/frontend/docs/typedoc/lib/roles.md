@@ -6,7 +6,7 @@
 
 > **getRole**(`Pcompleted`): [`Rank`](../types/rank.md#rank) \| `undefined`
 
-Defined in: [apps/frontend/src/lib/roles.ts:34](https://github.com/LifelagCheats/prescript.daily/blob/d39308c072353e430f7a5a216443ce86b40d1508/apps/frontend/src/lib/roles.ts#L34)
+Defined in: [apps/frontend/src/lib/roles.ts:34](https://github.com/LifelagCheats/prescript.daily/blob/a468ae566075ac335ce0be9ad8f510ff421f830c/apps/frontend/src/lib/roles.ts#L34)
 
 Function responsible for returning the user's current rank/role (however you call it).
 
@@ -64,7 +64,7 @@ const Role1: Rank = getRole(26) // returns 'Proxy'.
 
 > **nextRole**(`rank`): [`Rank`](../types/rank.md#rank)
 
-Defined in: [apps/frontend/src/lib/roles.ts:55](https://github.com/LifelagCheats/prescript.daily/blob/d39308c072353e430f7a5a216443ce86b40d1508/apps/frontend/src/lib/roles.ts#L55)
+Defined in: [apps/frontend/src/lib/roles.ts:55](https://github.com/LifelagCheats/prescript.daily/blob/a468ae566075ac335ce0be9ad8f510ff421f830c/apps/frontend/src/lib/roles.ts#L55)
 
 Function responsible for returning the rank right after the user's current.
 

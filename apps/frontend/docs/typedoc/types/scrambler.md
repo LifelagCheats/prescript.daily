@@ -4,7 +4,7 @@
 
 ### ScramblerOptions
 
-Defined in: [apps/frontend/src/types/scrambler.d.ts:14](https://github.com/LifelagCheats/prescript.daily/blob/d39308c072353e430f7a5a216443ce86b40d1508/apps/frontend/src/types/scrambler.d.ts#L14)
+Defined in: [apps/frontend/src/types/scrambler.d.ts:14](https://github.com/LifelagCheats/prescript.daily/blob/a468ae566075ac335ce0be9ad8f510ff421f830c/apps/frontend/src/types/scrambler.d.ts#L14)
 
 Represents the settings that can be submitted into the [lib/scrambler.revealTextScramble](../lib/scrambler.md#revealtextscramble) function.
 
@@ -42,7 +42,7 @@ frames per second, remember that the equation is 1000 / fps.
 </td>
 <td>
 
-[apps/frontend/src/types/scrambler.d.ts:15](https://github.com/LifelagCheats/prescript.daily/blob/d39308c072353e430f7a5a216443ce86b40d1508/apps/frontend/src/types/scrambler.d.ts#L15)
+[apps/frontend/src/types/scrambler.d.ts:15](https://github.com/LifelagCheats/prescript.daily/blob/a468ae566075ac335ce0be9ad8f510ff421f830c/apps/frontend/src/types/scrambler.d.ts#L15)
 
 </td>
 </tr>
@@ -64,7 +64,7 @@ a string with a list of all the characters available to be chosen each time a si
 </td>
 <td>
 
-[apps/frontend/src/types/scrambler.d.ts:16](https://github.com/LifelagCheats/prescript.daily/blob/d39308c072353e430f7a5a216443ce86b40d1508/apps/frontend/src/types/scrambler.d.ts#L16)
+[apps/frontend/src/types/scrambler.d.ts:16](https://github.com/LifelagCheats/prescript.daily/blob/a468ae566075ac335ce0be9ad8f510ff421f830c/apps/frontend/src/types/scrambler.d.ts#L16)
 
 </td>
 </tr>
@@ -86,7 +86,7 @@ the character that's going to be used as the block character in the sequence.
 </td>
 <td>
 
-[apps/frontend/src/types/scrambler.d.ts:17](https://github.com/LifelagCheats/prescript.daily/blob/d39308c072353e430f7a5a216443ce86b40d1508/apps/frontend/src/types/scrambler.d.ts#L17)
+[apps/frontend/src/types/scrambler.d.ts:17](https://github.com/LifelagCheats/prescript.daily/blob/a468ae566075ac335ce0be9ad8f510ff421f830c/apps/frontend/src/types/scrambler.d.ts#L17)
 
 </td>
 </tr>
@@ -108,7 +108,7 @@ time before each individual character is revealed, in the time it has not reache
 </td>
 <td>
 
-[apps/frontend/src/types/scrambler.d.ts:18](https://github.com/LifelagCheats/prescript.daily/blob/d39308c072353e430f7a5a216443ce86b40d1508/apps/frontend/src/types/scrambler.d.ts#L18)
+[apps/frontend/src/types/scrambler.d.ts:18](https://github.com/LifelagCheats/prescript.daily/blob/a468ae566075ac335ce0be9ad8f510ff421f830c/apps/frontend/src/types/scrambler.d.ts#L18)
 
 </td>
 </tr>
@@ -130,7 +130,7 @@ the chance of the block character appearing that frame.
 </td>
 <td>
 
-[apps/frontend/src/types/scrambler.d.ts:19](https://github.com/LifelagCheats/prescript.daily/blob/d39308c072353e430f7a5a216443ce86b40d1508/apps/frontend/src/types/scrambler.d.ts#L19)
+[apps/frontend/src/types/scrambler.d.ts:19](https://github.com/LifelagCheats/prescript.daily/blob/a468ae566075ac335ce0be9ad8f510ff421f830c/apps/frontend/src/types/scrambler.d.ts#L19)
 
 </td>
 </tr>
@@ -152,7 +152,7 @@ the chance of the respective beep sound being played that frame.
 </td>
 <td>
 
-[apps/frontend/src/types/scrambler.d.ts:20](https://github.com/LifelagCheats/prescript.daily/blob/d39308c072353e430f7a5a216443ce86b40d1508/apps/frontend/src/types/scrambler.d.ts#L20)
+[apps/frontend/src/types/scrambler.d.ts:20](https://github.com/LifelagCheats/prescript.daily/blob/a468ae566075ac335ce0be9ad8f510ff421f830c/apps/frontend/src/types/scrambler.d.ts#L20)
 
 </td>
 </tr>
@@ -174,7 +174,7 @@ minimum time that needs to have passed between beeps for them to be played.
 </td>
 <td>
 
-[apps/frontend/src/types/scrambler.d.ts:21](https://github.com/LifelagCheats/prescript.daily/blob/d39308c072353e430f7a5a216443ce86b40d1508/apps/frontend/src/types/scrambler.d.ts#L21)
+[apps/frontend/src/types/scrambler.d.ts:21](https://github.com/LifelagCheats/prescript.daily/blob/a468ae566075ac335ce0be9ad8f510ff421f830c/apps/frontend/src/types/scrambler.d.ts#L21)
 
 </td>
 </tr>
@@ -185,7 +185,7 @@ minimum time that needs to have passed between beeps for them to be played.
 
 ### ScramblerGlobals
 
-Defined in: [apps/frontend/src/types/scrambler.d.ts:34](https://github.com/LifelagCheats/prescript.daily/blob/d39308c072353e430f7a5a216443ce86b40d1508/apps/frontend/src/types/scrambler.d.ts#L34)
+Defined in: [apps/frontend/src/types/scrambler.d.ts:34](https://github.com/LifelagCheats/prescript.daily/blob/a468ae566075ac335ce0be9ad8f510ff421f830c/apps/frontend/src/types/scrambler.d.ts#L34)
 
 Represents the core settings and objects used in the [lib/scrambler.revealTextScramble](../lib/scrambler.md#revealtextscramble) function.
 
@@ -223,7 +223,7 @@ boolean property that dictates whether the next audio properties will be execute
 </td>
 <td>
 
-[apps/frontend/src/types/scrambler.d.ts:35](https://github.com/LifelagCheats/prescript.daily/blob/d39308c072353e430f7a5a216443ce86b40d1508/apps/frontend/src/types/scrambler.d.ts#L35)
+[apps/frontend/src/types/scrambler.d.ts:35](https://github.com/LifelagCheats/prescript.daily/blob/a468ae566075ac335ce0be9ad8f510ff421f830c/apps/frontend/src/types/scrambler.d.ts#L35)
 
 </td>
 </tr>
@@ -245,7 +245,7 @@ Howl instance that will be played at the start of the sequence.
 </td>
 <td>
 
-[apps/frontend/src/types/scrambler.d.ts:36](https://github.com/LifelagCheats/prescript.daily/blob/d39308c072353e430f7a5a216443ce86b40d1508/apps/frontend/src/types/scrambler.d.ts#L36)
+[apps/frontend/src/types/scrambler.d.ts:36](https://github.com/LifelagCheats/prescript.daily/blob/a468ae566075ac335ce0be9ad8f510ff421f830c/apps/frontend/src/types/scrambler.d.ts#L36)
 
 </td>
 </tr>
@@ -267,7 +267,7 @@ Howl instance that will be played as the beep sound in the sequence.
 </td>
 <td>
 
-[apps/frontend/src/types/scrambler.d.ts:37](https://github.com/LifelagCheats/prescript.daily/blob/d39308c072353e430f7a5a216443ce86b40d1508/apps/frontend/src/types/scrambler.d.ts#L37)
+[apps/frontend/src/types/scrambler.d.ts:37](https://github.com/LifelagCheats/prescript.daily/blob/a468ae566075ac335ce0be9ad8f510ff421f830c/apps/frontend/src/types/scrambler.d.ts#L37)
 
 </td>
 </tr>
@@ -289,7 +289,7 @@ Howl instanc that will be played once the animation ends.
 </td>
 <td>
 
-[apps/frontend/src/types/scrambler.d.ts:38](https://github.com/LifelagCheats/prescript.daily/blob/d39308c072353e430f7a5a216443ce86b40d1508/apps/frontend/src/types/scrambler.d.ts#L38)
+[apps/frontend/src/types/scrambler.d.ts:38](https://github.com/LifelagCheats/prescript.daily/blob/a468ae566075ac335ce0be9ad8f510ff421f830c/apps/frontend/src/types/scrambler.d.ts#L38)
 
 </td>
 </tr>
@@ -300,7 +300,7 @@ Howl instanc that will be played once the animation ends.
 
 ### RevealElement
 
-Defined in: [apps/frontend/src/types/scrambler.d.ts:52](https://github.com/LifelagCheats/prescript.daily/blob/d39308c072353e430f7a5a216443ce86b40d1508/apps/frontend/src/types/scrambler.d.ts#L52)
+Defined in: [apps/frontend/src/types/scrambler.d.ts:52](https://github.com/LifelagCheats/prescript.daily/blob/a468ae566075ac335ce0be9ad8f510ff421f830c/apps/frontend/src/types/scrambler.d.ts#L52)
 
 An interface representing the type of element going to be revealed by the [lib/scrambler.revealTextScramble](../lib/scrambler.md#revealtextscramble) function.
 
@@ -346,7 +346,7 @@ time between each reveal sequence done by the function, attached directly to the
 </td>
 <td>
 
-[apps/frontend/src/types/scrambler.d.ts:53](https://github.com/LifelagCheats/prescript.daily/blob/d39308c072353e430f7a5a216443ce86b40d1508/apps/frontend/src/types/scrambler.d.ts#L53)
+[apps/frontend/src/types/scrambler.d.ts:53](https://github.com/LifelagCheats/prescript.daily/blob/a468ae566075ac335ce0be9ad8f510ff421f830c/apps/frontend/src/types/scrambler.d.ts#L53)
 
 </td>
 </tr>
@@ -357,7 +357,7 @@ time between each reveal sequence done by the function, attached directly to the
 
 ### Prescript
 
-Defined in: [apps/frontend/src/types/scrambler.d.ts:67](https://github.com/LifelagCheats/prescript.daily/blob/d39308c072353e430f7a5a216443ce86b40d1508/apps/frontend/src/types/scrambler.d.ts#L67)
+Defined in: [apps/frontend/src/types/scrambler.d.ts:67](https://github.com/LifelagCheats/prescript.daily/blob/a468ae566075ac335ce0be9ad8f510ff421f830c/apps/frontend/src/types/scrambler.d.ts#L67)
 
 Interface represeting a prescript.
 
@@ -399,7 +399,7 @@ the prescript's ID in the Supabase database.
 </td>
 <td>
 
-[apps/frontend/src/types/scrambler.d.ts:68](https://github.com/LifelagCheats/prescript.daily/blob/d39308c072353e430f7a5a216443ce86b40d1508/apps/frontend/src/types/scrambler.d.ts#L68)
+[apps/frontend/src/types/scrambler.d.ts:68](https://github.com/LifelagCheats/prescript.daily/blob/a468ae566075ac335ce0be9ad8f510ff421f830c/apps/frontend/src/types/scrambler.d.ts#L68)
 
 </td>
 </tr>
@@ -421,7 +421,7 @@ a string that contains the Prescript's instructions as per the database.
 </td>
 <td>
 
-[apps/frontend/src/types/scrambler.d.ts:69](https://github.com/LifelagCheats/prescript.daily/blob/d39308c072353e430f7a5a216443ce86b40d1508/apps/frontend/src/types/scrambler.d.ts#L69)
+[apps/frontend/src/types/scrambler.d.ts:69](https://github.com/LifelagCheats/prescript.daily/blob/a468ae566075ac335ce0be9ad8f510ff421f830c/apps/frontend/src/types/scrambler.d.ts#L69)
 
 </td>
 </tr>

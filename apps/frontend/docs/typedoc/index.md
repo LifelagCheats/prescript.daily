@@ -9,11 +9,13 @@
 
 - [`audio.md`](./lib/audio.md/)
 - [`auth.md`](./lib/auth.md/)
+- [`dom.md`](./lib/dom.md/)
 - [`errorHandler.md`](./lib/errorHandler.md/)
 - [`general.md`](./lib/general.md/)
 - [`roles.md`](./lib/roles.md/)
 - [`scrambler.md`](./lib/scrambler.md/)
 - [`supabase.md`](./lib/supabase.md/)
+- [`toast.md`](./lib/toast.md/)
 
 ## Custom Types
 
