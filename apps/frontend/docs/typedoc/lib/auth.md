@@ -4,7 +4,7 @@
 
 ### LoginError
 
-Defined in: [apps/frontend/src/lib/auth.ts:12](https://github.com/LifelagCheats/prescript.daily/blob/a468ae566075ac335ce0be9ad8f510ff421f830c/apps/frontend/src/lib/auth.ts#L12)
+Defined in: [apps/frontend/src/lib/auth.ts:12](https://github.com/LifelagCheats/prescript.daily/blob/023c59a78a0e096580ab52e1699b520cfa71ba04/apps/frontend/src/lib/auth.ts#L12)
 
 LoginError represents an authentication error.
 
@@ -21,7 +21,7 @@ other application errors.
 
 > **new LoginError**(`message`): [`LoginError`](#loginerror)
 
-Defined in: [apps/frontend/src/lib/auth.ts:18](https://github.com/LifelagCheats/prescript.daily/blob/a468ae566075ac335ce0be9ad8f510ff421f830c/apps/frontend/src/lib/auth.ts#L18)
+Defined in: [apps/frontend/src/lib/auth.ts:18](https://github.com/LifelagCheats/prescript.daily/blob/023c59a78a0e096580ab52e1699b520cfa71ba04/apps/frontend/src/lib/auth.ts#L18)
 
 Creates a new LoginError.
 
@@ -114,7 +114,7 @@ not capture any frames.
 </td>
 <td>
 
-node\_modules/.pnpm/@types+node@26.1.2/node\_modules/@types/node/globals.d.ts:67
+node\_modules/.pnpm/@types+node@26.2.0/node\_modules/@types/node/globals.d.ts:67
 
 </td>
 </tr>
@@ -255,7 +255,7 @@ node\_modules/.pnpm/typescript@6.0.3/node\_modules/typescript/lib/lib.es5.d.ts:1
 
 > `static` **captureStackTrace**(`targetObject`, `constructorOpt?`): `void`
 
-Defined in: node\_modules/.pnpm/@types+node@26.1.2/node\_modules/@types/node/globals.d.ts:51
+Defined in: node\_modules/.pnpm/@types+node@26.2.0/node\_modules/@types/node/globals.d.ts:51
 
 Creates a `.stack` property on `targetObject`, which when accessed returns
 a string representing the location in the code at which
@@ -350,7 +350,7 @@ a();
 
 > `static` **prepareStackTrace**(`err`, `stackTraces`): `any`
 
-Defined in: node\_modules/.pnpm/@types+node@26.1.2/node\_modules/@types/node/globals.d.ts:55
+Defined in: node\_modules/.pnpm/@types+node@26.2.0/node\_modules/@types/node/globals.d.ts:55
 
 ###### Parameters
 
@@ -448,7 +448,7 @@ Indicates whether the argument provided is a built-in Error instance or not.
 
 > `const` **Authenticator**: `object`
 
-Defined in: [apps/frontend/src/lib/auth.ts:87](https://github.com/LifelagCheats/prescript.daily/blob/a468ae566075ac335ce0be9ad8f510ff421f830c/apps/frontend/src/lib/auth.ts#L87)
+Defined in: [apps/frontend/src/lib/auth.ts:87](https://github.com/LifelagCheats/prescript.daily/blob/023c59a78a0e096580ab52e1699b520cfa71ba04/apps/frontend/src/lib/auth.ts#L87)
 
 Authenticator is the API with which one interacts to authenticate the user.
 
@@ -488,7 +488,7 @@ const session = Authenticator.login('email@example.com', 'password')
 </td>
 <td>
 
-[apps/frontend/src/lib/auth.ts:100](https://github.com/LifelagCheats/prescript.daily/blob/a468ae566075ac335ce0be9ad8f510ff421f830c/apps/frontend/src/lib/auth.ts#L100)
+[apps/frontend/src/lib/auth.ts:100](https://github.com/LifelagCheats/prescript.daily/blob/023c59a78a0e096580ab52e1699b520cfa71ba04/apps/frontend/src/lib/auth.ts#L100)
 
 </td>
 </tr>
@@ -516,7 +516,7 @@ const newUser = await Authenticator.signUp('67onamerrychristmas', 'johnkaisen@em
 </td>
 <td>
 
-[apps/frontend/src/lib/auth.ts:117](https://github.com/LifelagCheats/prescript.daily/blob/a468ae566075ac335ce0be9ad8f510ff421f830c/apps/frontend/src/lib/auth.ts#L117)
+[apps/frontend/src/lib/auth.ts:117](https://github.com/LifelagCheats/prescript.daily/blob/023c59a78a0e096580ab52e1699b520cfa71ba04/apps/frontend/src/lib/auth.ts#L117)
 
 </td>
 </tr>

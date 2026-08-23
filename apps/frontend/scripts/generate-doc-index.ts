@@ -30,4 +30,4 @@ ${typesList}
 `;
 
 writeFileSync('docs/typedoc/README.md', indexContent);
-console.log('index.md generated'); // // eslint-disable-line no-console
+console.log('index generated'); // // eslint-disable-line no-console

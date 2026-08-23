@@ -6,7 +6,7 @@
 
 > **SupabaseCookieContext** = `object`
 
-Defined in: [apps/frontend/src/lib/supabase.ts:18](https://github.com/LifelagCheats/prescript.daily/blob/a468ae566075ac335ce0be9ad8f510ff421f830c/apps/frontend/src/lib/supabase.ts#L18)
+Defined in: [apps/frontend/src/lib/supabase.ts:18](https://github.com/LifelagCheats/prescript.daily/blob/023c59a78a0e096580ab52e1699b520cfa71ba04/apps/frontend/src/lib/supabase.ts#L18)
 
 Context object passed to Supabase client creation functions.
 
@@ -22,7 +22,7 @@ It ensures the client can correctly set auth cookies on the response.
 
 > **request**: `Request`
 
-Defined in: [apps/frontend/src/lib/supabase.ts:26](https://github.com/LifelagCheats/prescript.daily/blob/a468ae566075ac335ce0be9ad8f510ff421f830c/apps/frontend/src/lib/supabase.ts#L26)
+Defined in: [apps/frontend/src/lib/supabase.ts:26](https://github.com/LifelagCheats/prescript.daily/blob/023c59a78a0e096580ab52e1699b520cfa71ba04/apps/frontend/src/lib/supabase.ts#L26)
 
 Cookie manipulation interface.
 
@@ -35,7 +35,7 @@ It mimics a subset of Astro's `cookies` API for compatibility.
 
 > **cookies**: `object`
 
-Defined in: [apps/frontend/src/lib/supabase.ts:39](https://github.com/LifelagCheats/prescript.daily/blob/a468ae566075ac335ce0be9ad8f510ff421f830c/apps/frontend/src/lib/supabase.ts#L39)
+Defined in: [apps/frontend/src/lib/supabase.ts:39](https://github.com/LifelagCheats/prescript.daily/blob/023c59a78a0e096580ab52e1699b520cfa71ba04/apps/frontend/src/lib/supabase.ts#L39)
 
 Sets a cookie on the response.
 
@@ -126,7 +126,7 @@ cookies.set('session', 'abc123', { httpOnly: true, maxAge: 3600 });
 
 > **createBrowserClient**(): `SupabaseClient`\<`any`, `"public"`, `"public"`, `any`, `any`\>
 
-Defined in: [apps/frontend/src/lib/supabase.ts:64](https://github.com/LifelagCheats/prescript.daily/blob/a468ae566075ac335ce0be9ad8f510ff421f830c/apps/frontend/src/lib/supabase.ts#L64)
+Defined in: [apps/frontend/src/lib/supabase.ts:64](https://github.com/LifelagCheats/prescript.daily/blob/023c59a78a0e096580ab52e1699b520cfa71ba04/apps/frontend/src/lib/supabase.ts#L64)
 
 Creates a Supabase client for use in the browser (client-side).
 
@@ -157,7 +157,7 @@ const { data } = await supabase.from('users').select('*');
 
 > **createServerClient**(`context`): `SupabaseClient`\<`any`, `"public"`, `"public"`, `any`, `any`\>
 
-Defined in: [apps/frontend/src/lib/supabase.ts:100](https://github.com/LifelagCheats/prescript.daily/blob/a468ae566075ac335ce0be9ad8f510ff421f830c/apps/frontend/src/lib/supabase.ts#L100)
+Defined in: [apps/frontend/src/lib/supabase.ts:100](https://github.com/LifelagCheats/prescript.daily/blob/023c59a78a0e096580ab52e1699b520cfa71ba04/apps/frontend/src/lib/supabase.ts#L100)
 
 Creates a Supabase client for use in server-side contexts (e.g., Astro endpoints, server actions).
 

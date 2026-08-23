@@ -6,7 +6,7 @@
 
 > **Email** = `` `${string}@${string}.${string}` ``
 
-Defined in: [apps/frontend/src/types/login.d.ts:16](https://github.com/LifelagCheats/prescript.daily/blob/a468ae566075ac335ce0be9ad8f510ff421f830c/apps/frontend/src/types/login.d.ts#L16)
+Defined in: [apps/frontend/src/types/login.d.ts:16](https://github.com/LifelagCheats/prescript.daily/blob/023c59a78a0e096580ab52e1699b520cfa71ba04/apps/frontend/src/types/login.d.ts#L16)
 
 Represents a valid email address
 
