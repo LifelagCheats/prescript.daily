@@ -1,0 +1,159 @@
+@use '@/styles/sass/components/defaults';
+@use '@/styles/sass/components/globals';
+
+/*
+* NOTE: I had no ideas at the moment, so i just decided to base the form's styling on
+* supabase's. looks cool to me.
+* */
+
+$border-control: #d1d5db;
+$border-button: #9ca3af;
+$border-destructive: #ef4444;
+$border-destructive-400: #f87171;
+
+$bg-foreground-0026: rgba(0, 0, 0, 0.026);
+$bg-destructive-200: #fecaca;
+
+$text-foreground-muted: #6b7280;
+$text-foreground-light: #9ca3af;
+
+$ring-focus: #3b82f6;
+
+$breakpoint-md: 768px;
+
+.FormBox {
+  background: #0f1010;
+  font-family: firacode;
+  position: absolute;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  right: 15rem;
+  transform: translateX(50%);
+
+  color: #d9dbda;
+
+  width: 0;
+  min-width: 0;
+  height: 20.9rem;
+  min-height: 20.9rem;
+
+  bottom: 5rem;
+
+  padding: 0rem;
+
+  border-radius: 0.7rem;
+
+  transition:
+    width 0.3s ease,
+    padding 0.2666s ease;
+  overflow: hidden;
+
+  &.open {
+    width: 18rem;
+    padding: 2rem;
+  }
+}
+
+#orOption {
+  display: table-row;
+  text-align: center;
+}
+
+.Input {
+  display: flex;
+  width: 15rem;
+  height: 1rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+
+  border: 1px solid #363736;
+  background-color: #191a19;
+
+  font-size: 1rem;
+  line-height: 1;
+  color: #d9dbda;
+
+  &::file-selector-button {
+    border: 0;
+    background: transparent;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  &::placeholder {
+    color: $text-foreground-muted;
+  }
+
+  &:read-only {
+    border-color: $border-button;
+    color: $text-foreground-light;
+  }
+
+  &:focus {
+    border-color: $border-control;
+    outline: none;
+    box-shadow: 0 0 0 2px $ring-focus;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    color: $text-foreground-muted;
+  }
+
+  &[aria-invalid='true'] {
+    background-color: $bg-destructive-200;
+    border-color: $border-destructive-400;
+
+    &:focus,
+    &:focus-visible {
+      border-color: $border-destructive;
+    }
+  }
+
+  @media (min-width: $breakpoint-md) {
+    font-size: 0.875rem;
+  }
+}
+
+label,
+input {
+  margin-bottom: 0.65rem;
+}
+
+label {
+  padding-right: 10px;
+}
+
+.Submission {
+  margin-top: 1.6rem;
+  width: 16.8rem;
+  height: 2rem;
+  color: white;
+
+  background: #0069e0;
+  border: 1px solid #5dcaff;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    filter: brightness(1.2);
+  }
+}
+
+.signInForm {
+  transition: all 0.3 ease;
+
+  &.show {
+    opacity: 0;
+  }
+}
+
+.logInForm {
+  transition: all 0.3 ease;
+
+  &.show {
+    opacity: 0;
+  }
+}

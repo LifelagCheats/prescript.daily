@@ -6,170 +6,89 @@
 
   NOTE: might just move this when it gets big but for now it stays this way
 */
-
-import { Howl } from 'howler';
-import { createServerClient } from '@lib/supabase';
+import { createBrowserClient } from '@lib/supabase';
 
 import handleError from '@lib/errorHandler';
-import type { ScramblerGlobals, ScramblerOptions, RevealElement } from '@/types/scrambler';
+import type { Prescript } from '@/types/scrambler';
+import randomInt from '@lib/general';
+import Scramble from '@lib/scrambler';
+import { audio } from '@/lib/audio';
+import { waitForElement } from '@lib/dom';
 
-const supabase = createServerClient();
+document.addEventListener('DOMContentLoaded', async () => {
+  const supabase = createBrowserClient();
 
-const button: HTMLElement | null = document.querySelector('.PrescriptButton');
-const prescript: HTMLElement | null = document.querySelector('.Prescript');
+  const [button, prescript] = await Promise.all([
+    waitForElement<HTMLElement>('.PrescriptButton'),
+    waitForElement<HTMLElement>('.Prescript'),
+  ]);
 
-const { count } = await supabase.from('Prescripts').select('*', { count: 'exact', head: true });
+  const { data: session } = await supabase.auth.getUser();
 
-function randomInt(min: number, max: number) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-let cachedIds: number[] = JSON.parse(localStorage.getItem('cachedIds') ?? '[]') as number[];
-
-if (cachedIds.length === count) {
-  cachedIds = [];
-}
-
-const beep = new Howl({
-  src: ['/sounds/beep.mp3'],
-  loop: false,
-  autoplay: false,
-  preload: true,
-  html5: false,
-  onloaderror: function (id, err) {
-    handleError(err);
-  },
-  onplayerror: function (id, err) {
-    handleError(err);
-  },
-});
-
-const start = new Howl({
-  src: ['/sounds/beepstart.mp3'],
-  loop: false,
-  autoplay: false,
-  preload: true,
-  html5: false,
-  onloaderror: function (id, err) {
-    handleError(err);
-  },
-  onplayerror: function (id, err) {
-    handleError(err);
-  },
-});
-
-function revealTextScramble(
-  el: RevealElement,
-  fromText: string,
-  finalText: string,
-  options: ScramblerOptions = {},
-  globals: ScramblerGlobals = { audioUnlocked: false, playBeep: () => {} },
-): void {
-  if (!el.classList.contains('busy')) {
-    el.classList.add('busy');
-  } else {
-    return;
+  if (!session) {
+    throw new Error('Not signed in');
   }
 
-  if (!start.playing()) {
-    start.play();
+  async function countPrescripts() {
+    const encountered = await supabase
+      .from('profiles')
+      .select('user_id, encountered')
+      .eq('user_id', session?.user?.id)
+      .single();
+
+    return encountered;
   }
 
-  // Stop any previous scramble
-  if (el.__revealTimer) {
-    clearInterval(el.__revealTimer);
-    el.__revealTimer = null;
-  }
+  const cache = await countPrescripts();
+  let cachedIds: number[] = cache?.data?.encountered;
+  localStorage.setItem('cachedIds', JSON.stringify(cachedIds));
 
-  const {
-    fps = 16,
-    scrambleChars = '0123456789!█▒░ABCDEF?#@.$&',
-    blockChar = '█',
-    revealSpeed = 0.045,
-    blockChance = 0.35,
-    beepChancePerFrame = 0.35,
-    minBeepGapMs = 70,
-  } = options;
+  if (prescript) {
+    button?.addEventListener('click', async () => {
+      try {
+        if (!prescript.classList.contains('busy')) {
+          prescript.classList.add('busy');
+          const query = supabase
+            .from('Prescripts')
+            .select('id, instruction')
+            .order('id', { ascending: false });
 
-  const { audioUnlocked } = globals;
+          if (cachedIds && cachedIds.length > 0) {
+            query.not('id', 'in', `(${cachedIds.join(',')})`);
+          }
 
-  const len: number = Math.max(fromText.length, finalText.length);
-  let progress: number = 0;
-  let lastBeepTime: number = 0;
+          const { data: slips } = await query;
 
-  const randomChar = (): string => {
-    return Math.random() < blockChance
-      ? blockChar
-      : scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
-  };
+          if (!slips || slips.length === 0 || !prescript) return;
 
-  el.__revealTimer = setInterval((): void => {
-    progress += revealSpeed * len;
-    let out: string = '';
+          const slip: Prescript = slips[randomInt(0, slips.length - 1)];
 
-    for (let i = 0; i < len; i++) {
-      const targetChar: string = finalText[i] ?? '';
-      if (i < progress) {
-        out += targetChar;
-      } else {
-        if (targetChar === ' ' || (fromText[i] ?? '') === ' ') {
-          out += ' ';
-        } else {
-          out += randomChar();
+          prescript.dataset.id = String(slip.id);
+
+          await Scramble(
+            prescript,
+            '',
+            slip.instruction,
+            {},
+            {
+              audioUnlocked: true,
+              startBeep: audio.start,
+              Beep: audio.beep,
+            },
+            false,
+          );
+
+          await supabase.rpc('add_encountered', {
+            prescript: Number(slip.id),
+          });
+
+          const cache = await countPrescripts();
+          cachedIds = cache?.data?.encountered;
+          localStorage.setItem('cachedIds', JSON.stringify(cachedIds));
         }
+      } catch (error) {
+        await handleError(error);
       }
-    }
-
-    el.textContent = out;
-
-    if (audioUnlocked && progress < len) {
-      const now: number = performance.now();
-      if (Math.random() < beepChancePerFrame && now - lastBeepTime > minBeepGapMs) {
-        beep.play();
-        lastBeepTime = now;
-      }
-    }
-
-    if (progress >= len) {
-      el.textContent = finalText;
-      if (el.__revealTimer) {
-        clearInterval(el.__revealTimer);
-        el.__revealTimer = null;
-      }
-      el.classList.remove('busy');
-    }
-  }, 1000 / fps);
-}
-
-if (prescript) {
-  button?.addEventListener('click', async () => {
-    try {
-      if (!prescript.classList.contains('busy')) {
-        const { data: slip } = await supabase
-          .from('Prescripts')
-          .select('id, instruction')
-          .order('id', { ascending: false })
-          .not('id', 'in', `(${cachedIds ? cachedIds.join(',') : ''})`)
-          .eq('id', randomInt(1, count ?? 0));
-
-        if (!slip || slip.length === 0 || !prescript) return;
-
-        revealTextScramble(
-          prescript,
-          '',
-          slip[0].instruction,
-          {},
-          {
-            audioUnlocked: true,
-            playBeep: () => beep.play(),
-          },
-        );
-
-        cachedIds.push(slip[0].id);
-        localStorage.setItem('cachedIds', JSON.stringify(cachedIds));
-      }
-    } catch (error) {
-      await handleError(error);
-    }
-  });
-}
+    });
+  }
+});

@@ -1,0 +1,24 @@
+{
+  "entryPoints": ["./src/lib", "./src/types"],
+  "entryPointStrategy": "expand",
+  "out": "./docs/typedoc",
+  "plugin": [
+    "typedoc-plugin-markdown",
+    "typedoc-plugin-rename-defaults",
+    "typedoc-plugin-no-inherit"
+  ],
+  "readme": "templates/typedoc_index.md",
+  "interfacePropertiesFormat": "htmlTable",
+  "classPropertiesFormat": "htmlTable",
+  "parametersFormat": "htmlTable",
+  "enumMembersFormat": "htmlTable",
+  "typeDeclarationFormat": "htmlTable",
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "excludeInternal": true,
+  "name": "Prescript.Daily API Reference",
+  "hidePageHeader": true,
+  "hideBreadcrumbs": true,
+  "sort": ["source-order"],
+  "outputFileStrategy": "modules"
+}

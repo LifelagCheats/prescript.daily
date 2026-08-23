@@ -13,6 +13,17 @@ minimumReleaseAgeExclude:
   - '@tootallnate/once@2.0.1'
   - esbuild@0.28.1
   - js-yaml@4.1.2 || 4.3.0
+  - '@storybook/addon-a11y@10.5.10'
+  - '@storybook/addon-docs@10.5.10'
+  - '@storybook/addon-onboarding@10.5.10'
+  - '@storybook/addon-vitest@10.5.10'
+  - '@storybook/builder-vite@10.5.10'
+  - '@storybook/csf-plugin@10.5.10'
+  - '@storybook/react-dom-shim@10.5.10'
+  - '@storybook/react-vite@10.5.10'
+  - '@storybook/react@10.5.10'
+  - eslint-plugin-storybook@10.5.10
+  - storybook@10.5.10
 
 overrides:
   tar: '7.5.22'

@@ -1,0 +1,53 @@
+@use '@/styles/sass/components/defaults';
+@use '@/styles/sass/components/colors';
+
+.RankBox {
+  @include defaults.flex($justify-content: flex-start, $align-items: flex-start);
+
+  margin-top: 60px;
+  gap: 0.8rem;
+}
+
+.subtitles {
+  @include defaults.flex($direction: row);
+
+  gap: clamp(5rem, 2.5vw, 5.5rem);
+}
+
+.header {
+  color: rgba(255 255 255 / 0.9);
+  font-family: pixelmplus12regular;
+  font-size: clamp(0.875rem, 2.5vw, 1.2rem);
+}
+
+.extra {
+  color: rgba(255 255 255 / 0.6);
+  font-family: pixelmplus12regular;
+  font-size: clamp(0.875rem, 2.5vw, 1.2rem);
+}
+
+.progressBar {
+  @include defaults.flex($justify-content: flex-start, $align-items: flex-start);
+
+  width: 13rem;
+  height: 0.65rem;
+  align-self: center;
+  background: #323232;
+  border-radius: 3rem;
+
+  &__fill {
+    height: 100%;
+    background: #ffffff;
+    transition:
+      width 0.3s ease,
+      box-shadow 0.2s ease;
+    border-radius: 1.5rem;
+  }
+
+  &__fill:hover {
+    box-shadow:
+      0 0 0.2px #ffffff,
+      0 0 12px colors.$default;
+    cursor: pointer;
+  }
+}

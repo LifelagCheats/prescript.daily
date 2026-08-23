@@ -1,0 +1,16 @@
+.Counter {
+  display: inline-block;
+  transition:
+    transform 0.12s ease-out,
+    opacity 0.12s ease-out,
+    text-shadow 0.12s ease-out;
+  will-change: transform, opacity, text-shadow;
+}
+
+.Counter.updating {
+  transform: scaleX(1.02) skewX(-5deg);
+  opacity: 0.85;
+  text-shadow:
+    0.08em 0 0 rgba(255, 255, 255, 0.25),
+    -0.08em 0 0 rgba(255, 255, 255, 0.12);
+}

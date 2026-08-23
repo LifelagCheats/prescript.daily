@@ -1,28 +1,124 @@
 ---
-import Layout from "@layouts/layout.astro" 
-import '@styles/sass/main.scss'
+export const prerender = false;
 
+import Layout from "@layouts/layout.astro" 
+import Streak from "@components/react/streak.tsx"
+import ProgressBar from '@components/react/progressBar.tsx'
+import FadeIn from "@components/react/fadeIn";
+import Complete from '@components/react/completeButton.tsx'
+import Fail from '@components/react/failButton.tsx'
+import Form from '@components/react/tabs.tsx'
+import Toast from '@components/react/toast.tsx'
+
+import '@styles/sass/main.scss'
+import '@styles/sass/infobox.scss'
+import '@styles/sass/result.scss'
+import "@radix-ui/themes/styles.css";
+
+import { createServerClient } from "@lib/supabase";
+import { getRole, nextRole } from '@lib/roles'
+import type { Rank } from "@/types/rank";
+
+const supabase = createServerClient({
+  request: Astro.request,
+  cookies: Astro.cookies
+});
+const { data: { user } } = await supabase.auth.getUser();
+
+let raw = null;
+if (user) {
+  const result = await supabase
+  .from("profiles")
+  .select("id, user_id, streak, prescripts_completed")
+  .eq("user_id", user?.id)
+    .single();
+
+  raw = result.data;
+}
+
+let toastMessage1 = null;
+let toastMessage2 = null;
+
+const streakCount = raw?.streak ?? 0;
+const Pcompleted = raw?.prescripts_completed ?? 0;
+const role: Rank = getRole(Pcompleted) ?? { name: 'Proselyte', Pcompleted: 0 };
+const objective: Rank = nextRole(role.name) ?? { name: 'Proxy', Pcompleted: 25};
+
+if (user) {
+  toastMessage1 = `Welcome back, ${role.name} ${user.user_metadata.username}`;
+} else {
+  toastMessage1 = "Not logged in, choose your sign in method in the form";
+  toastMessage2 = "Your user data, like prescripts completed, rank and cross-device saving will not be available"
+}
 ---
 
 <Layout title="Prescript.daily" icon="/favicon.png">
 <meta name="description" content="Come, and recieve your heavenly mandated Prescript.">
   <meta name="author" content="Will of the City">
 
-  <div class="GlobalContainer">
-    <div class="LogoContainer">
-      <div class="PrescriptButton">
-        <img src="/assets/Aconite.svg" alt="button" class="FlowerImg">
+  <FadeIn client:only="react">
+    <Toast messages={[toastMessage1, toastMessage2]} client:load />
+    {!user && (
+      <div class="FormBox" id="FormBox">
+        <Form client:only="react" />
       </div>
-      <img src="/assets/Hand.svg" alt="test">
-      <img src="/assets/Emblem.svg" alt="emblem">
-  </div>
-  <div class="PrescriptContainer">
-      <span class="Prescript">look up, touch the aconite</span>
-  </div>
+    )}
+    {user && (
+      <div class="InfoBox" id="InfoBox">
+        <div class="UserInfo" id="UserInfo">
+          <div class="StreakBox" id="StreakBox">
+            <Streak streak={streakCount} client:load />
+          </div> 
+          <ProgressBar
+            floor={role.Pcompleted}
+            progress={Pcompleted} 
+            ceiling={objective.Pcompleted} 
+            header={role.name}
+            extra={Pcompleted}
+            client:load 
+          />
+        </div>
+        <div class="ResultBox">
+          <Complete client:only="react" user_id={user?.id} />
+          <Fail client:only="react" />
+        </div>
+        <div class="PrescriptInfo" id="PrescriptInfo"></div>
+      </div>
+    )}
+  
+    <div class="GlobalContainer">
+      <div class="LogoContainer">
+        <div class="PrescriptButton">
+          <img src="/assets/Aconite.svg" alt="button" class="FlowerImg">
+        </div>
+        <img src="/assets/Hand.svg" alt="test">
+        <img src="/assets/Emblem.svg" alt="emblem">
+    </div>
+      <div class="PrescriptContainer">
+          <span class="Prescript">look up, touch the aconite</span>
+      </div>
+    </div>
+  </FadeIn>
 
 <script>
   import "@scripts/ts/main"
-</script>
-  </div>
-</Layout>
 
+
+  const observer = new MutationObserver(() => {
+    const formBox = document.querySelector<HTMLElement>('#FormBox');
+
+    if (!formBox) return;
+
+    observer.disconnect();
+
+    requestAnimationFrame(() => {
+      formBox.classList.add('open');
+    });
+  });
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true,
+  });
+</script>
+</Layout>
