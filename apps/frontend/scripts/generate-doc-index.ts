@@ -29,5 +29,5 @@ ${libList}
 ${typesList}
 `;
 
-writeFileSync('docs/typedoc/index.md', indexContent);
+writeFileSync('docs/typedoc/README.md', indexContent);
 console.log('index.md generated'); // // eslint-disable-line no-console

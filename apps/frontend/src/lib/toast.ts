@@ -135,11 +135,11 @@ export class Toast {
  *
  * const toast1 = toast.add('hi', 3000);
  * console.log(ToastList); // [
- *                              {
- *                                id: 'abcdefg...'
- *                                message: 'hi'
- *                              }
- *                            ]
+ *                         //   {
+ *                         //     id: 'abcdefg...'
+ *                         //     message: 'hi'
+ *                         //   }
+ *                         // ]
  * console.log(toast1) // abcdefg...
  * toast.close('abcdefg')
  * console.log(ToastList) // [], empty.

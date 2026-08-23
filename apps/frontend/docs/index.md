@@ -11,10 +11,6 @@ _mainly me trying out documentation tool to see what fits me best, if you consid
 
 - [Typedoc API Reference](./typedoc/)
 
-## Component Library
-
-- [Storybook Component Library](./storybook/)
-
 ## Development
 
 - See [CONTRIBUTING.md](/CONTRIBUTING.md)
