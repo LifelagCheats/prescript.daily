@@ -1,0 +1,10 @@
+{
+  "entryPoints": ["./src/lib", "./src/types"],
+  "entryPointStrategy": "expand",
+  "out": "./docs/html",
+  "name": "Prescript.Daily API Reference",
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "excludeInternal": true,
+  "sort": ["source-order"]
+}

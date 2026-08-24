@@ -23,3 +23,10 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 .vercel
+
+.branches
+.temp
+
+*.log
+*storybook.log
+storybook-static

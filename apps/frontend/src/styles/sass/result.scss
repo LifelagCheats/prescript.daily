@@ -1,0 +1,28 @@
+@use '@/styles/sass/components/defaults';
+@use '@/styles/sass/components/globals';
+
+.ResultBox {
+  @include defaults.flex($direction: row);
+
+  gap: 5rem;
+}
+
+.CompleteButton {
+  @include defaults.flex;
+  @include globals.glow;
+
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.FailButton {
+  @include defaults.flex;
+  @include globals.glow;
+
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  user-select: none;
+}

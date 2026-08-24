@@ -5,7 +5,7 @@ bug:
   - 'crash'
   - 'fails'
 
-feature:
+enhancement:
   - 'feature'
   - 'request'
   - 'enhancement'

@@ -12,11 +12,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - run: npm install yaml
 
-      - uses: actions/github-script@v8
+      - uses: actions/github-script@v9
         with:
           script: |
             const fs = require("fs");
@@ -31,8 +31,16 @@ jobs:
 
             const labels = [];
 
+            function escapeRegex(str) {
+              return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+            }
+
             for (const [label, patterns] of Object.entries(config)) {
-              if (patterns.some(pattern => text.includes(pattern))) {
+              if (
+                patterns.some(pattern =>
+                  new RegExp(`\\b${escapeRegex(pattern)}\\b`, "i").test(text)
+                )
+              ) {
                 labels.push(label);
               }
             }
