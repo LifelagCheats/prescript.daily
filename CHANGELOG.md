@@ -1,3 +1,9 @@
+## [1.3.2](https://github.com/LifelagCheats/prescript.daily/compare/v1.3.1...v1.3.2) (2026-08-24)
+
+### Bug Fixes
+
+- **docs:** fix Github Actions CI not deploying the documentation page ([413cc90](https://github.com/LifelagCheats/prescript.daily/commit/413cc90986f7cd6bccab3fc70836e8018dd04563))
+
 ## [1.3.1](https://github.com/LifelagCheats/prescript.daily/compare/v1.3.0...v1.3.1) (2026-08-24)
 
 ### Bug Fixes
