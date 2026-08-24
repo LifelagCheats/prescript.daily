@@ -22,7 +22,7 @@ jobs:
 
     environment:
       name: github-pages
-      url: ${{ steps.deployment_outputs.page_url }}
+      url: ${{ steps.deployment.page_url }}
 
     steps:
       - name: Checkout Repository
@@ -62,3 +62,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
