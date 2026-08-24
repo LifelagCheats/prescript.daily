@@ -157,6 +157,8 @@ Keep PRs small and focused. A PR that does one thing is easy to review. A PR tha
 
 Write a short description in the PR — what does it do, why, anything the reviewer should pay attention to. You don't need to write an essay, just enough context so the reviewer isn't flying blind.
 
+btw don't SQUASH AND MERGE, so semantic-release bot can track the commits.
+
 ---
 
 If something's wrong or missing, bring it up. this doc can change.
