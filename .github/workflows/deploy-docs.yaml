@@ -56,6 +56,7 @@ jobs:
           mkdir -p dist/storybook
           cp -r apps/frontend/docs/html/. dist/typedoc/
           cp -r apps/frontend/docs/storybook/. dist/storybook/
+          cp -r apps/frontend/templates/index.html dist/
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
