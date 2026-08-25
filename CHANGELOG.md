@@ -1,3 +1,9 @@
+## [1.4.1](https://github.com/LifelagCheats/prescript.daily/compare/v1.4.0...v1.4.1) (2026-08-25)
+
+### Bug Fixes
+
+- **vercel:** add Analytics Vercel component to start tracking users and visitors ([6b74485](https://github.com/LifelagCheats/prescript.daily/commit/6b744855641c8ef4b552e816764958e5f205a166))
+
 # [1.4.0](https://github.com/LifelagCheats/prescript.daily/compare/v1.3.2...v1.4.0) (2026-08-25)
 
 ### Features
