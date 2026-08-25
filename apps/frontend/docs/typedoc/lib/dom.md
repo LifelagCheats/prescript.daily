@@ -6,7 +6,7 @@
 
 > **waitForElement**\<`T`\>(`selector`): `Promise`\<`T`\>
 
-Defined in: [apps/frontend/src/lib/dom.ts:13](https://github.com/LifelagCheats/prescript.daily/blob/023c59a78a0e096580ab52e1699b520cfa71ba04/apps/frontend/src/lib/dom.ts#L13)
+Defined in: [apps/frontend/src/lib/dom.ts:13](https://github.com/LifelagCheats/prescript.daily/blob/413cc90986f7cd6bccab3fc70836e8018dd04563/apps/frontend/src/lib/dom.ts#L13)
 
 Replacement for the standard document.querySelector, wrapping around MutationObserver to achieve asynchronous queries and promises
 

@@ -4,7 +4,7 @@
 
 ### Toast
 
-Defined in: [apps/frontend/src/lib/toast.ts:29](https://github.com/LifelagCheats/prescript.daily/blob/023c59a78a0e096580ab52e1699b520cfa71ba04/apps/frontend/src/lib/toast.ts#L29)
+Defined in: [apps/frontend/src/lib/toast.ts:29](https://github.com/LifelagCheats/prescript.daily/blob/413cc90986f7cd6bccab3fc70836e8018dd04563/apps/frontend/src/lib/toast.ts#L29)
 
 the Toast class is a singleton class made to manage through a variety of functions toast elements.
 
@@ -32,7 +32,7 @@ This class is implemented to make sure that all toast instances are shared throu
 
 > **subscribe**(`listener`): () => `void`
 
-Defined in: [apps/frontend/src/lib/toast.ts:44](https://github.com/LifelagCheats/prescript.daily/blob/023c59a78a0e096580ab52e1699b520cfa71ba04/apps/frontend/src/lib/toast.ts#L44)
+Defined in: [apps/frontend/src/lib/toast.ts:44](https://github.com/LifelagCheats/prescript.daily/blob/413cc90986f7cd6bccab3fc70836e8018dd04563/apps/frontend/src/lib/toast.ts#L44)
 
 the function that enables for the subscription and listening of the state of all toast elements.
 
@@ -82,7 +82,7 @@ due to listeners being a set, does not allow for duplicates.
 
 > **add**(`message`, `timeout?`): `` `${string}-${string}-${string}-${string}-${string}` ``
 
-Defined in: [apps/frontend/src/lib/toast.ts:79](https://github.com/LifelagCheats/prescript.daily/blob/023c59a78a0e096580ab52e1699b520cfa71ba04/apps/frontend/src/lib/toast.ts#L79)
+Defined in: [apps/frontend/src/lib/toast.ts:79](https://github.com/LifelagCheats/prescript.daily/blob/413cc90986f7cd6bccab3fc70836e8018dd04563/apps/frontend/src/lib/toast.ts#L79)
 
 Adds a new toast to the list of active toasts
 
@@ -158,11 +158,25 @@ and the message property as the message parameter given to the function,
 after a certain amount of time, if a timeout was given, the toast will vanish. if not, it'll persevere.
 either way, after doing this, it'll update all listeners.
 
+##### emit()
+
+> **emit**(): `Set`\<[`Listener`](#listener)\>
+
+Defined in: [apps/frontend/src/lib/toast.ts:98](https://github.com/LifelagCheats/prescript.daily/blob/413cc90986f7cd6bccab3fc70836e8018dd04563/apps/frontend/src/lib/toast.ts#L98)
+
+Returns the list of active toasts and the list of subscribed listeners
+
+###### Returns
+
+`Set`\<[`Listener`](#listener)\>
+
+the list of active toasts and the list of subscribed listeners
+
 ##### close()
 
 > **close**(`id`): `void`
 
-Defined in: [apps/frontend/src/lib/toast.ts:100](https://github.com/LifelagCheats/prescript.daily/blob/023c59a78a0e096580ab52e1699b520cfa71ba04/apps/frontend/src/lib/toast.ts#L100)
+Defined in: [apps/frontend/src/lib/toast.ts:109](https://github.com/LifelagCheats/prescript.daily/blob/413cc90986f7cd6bccab3fc70836e8018dd04563/apps/frontend/src/lib/toast.ts#L109)
 
 Deletes a toast and then updates all listeners.
 
@@ -204,7 +218,7 @@ after that, updates all listeners.
 
 > **clear**(): `void`
 
-Defined in: [apps/frontend/src/lib/toast.ts:108](https://github.com/LifelagCheats/prescript.daily/blob/023c59a78a0e096580ab52e1699b520cfa71ba04/apps/frontend/src/lib/toast.ts#L108)
+Defined in: [apps/frontend/src/lib/toast.ts:117](https://github.com/LifelagCheats/prescript.daily/blob/413cc90986f7cd6bccab3fc70836e8018dd04563/apps/frontend/src/lib/toast.ts#L117)
 
 Deletes all toast elements and updates all listeners, completely clearing the list of active toasts.
 
@@ -218,7 +232,7 @@ Deletes all toast elements and updates all listeners, completely clearing the li
 
 > **ToastItem** = `object`
 
-Defined in: [apps/frontend/src/lib/toast.ts:7](https://github.com/LifelagCheats/prescript.daily/blob/023c59a78a0e096580ab52e1699b520cfa71ba04/apps/frontend/src/lib/toast.ts#L7)
+Defined in: [apps/frontend/src/lib/toast.ts:7](https://github.com/LifelagCheats/prescript.daily/blob/413cc90986f7cd6bccab3fc70836e8018dd04563/apps/frontend/src/lib/toast.ts#L7)
 
 Represents a toast object inside the ToastItem list.
 
@@ -228,7 +242,7 @@ Represents a toast object inside the ToastItem list.
 
 > **id**: `string`
 
-Defined in: [apps/frontend/src/lib/toast.ts:8](https://github.com/LifelagCheats/prescript.daily/blob/023c59a78a0e096580ab52e1699b520cfa71ba04/apps/frontend/src/lib/toast.ts#L8)
+Defined in: [apps/frontend/src/lib/toast.ts:8](https://github.com/LifelagCheats/prescript.daily/blob/413cc90986f7cd6bccab3fc70836e8018dd04563/apps/frontend/src/lib/toast.ts#L8)
 
 the unique identifier of the toast object
 
@@ -236,7 +250,7 @@ the unique identifier of the toast object
 
 > **message**: `string`
 
-Defined in: [apps/frontend/src/lib/toast.ts:9](https://github.com/LifelagCheats/prescript.daily/blob/023c59a78a0e096580ab52e1699b520cfa71ba04/apps/frontend/src/lib/toast.ts#L9)
+Defined in: [apps/frontend/src/lib/toast.ts:9](https://github.com/LifelagCheats/prescript.daily/blob/413cc90986f7cd6bccab3fc70836e8018dd04563/apps/frontend/src/lib/toast.ts#L9)
 
 the message it carries
 
@@ -246,7 +260,7 @@ the message it carries
 
 > **Listener** = (`items`) => `void`
 
-Defined in: [apps/frontend/src/lib/toast.ts:18](https://github.com/LifelagCheats/prescript.daily/blob/023c59a78a0e096580ab52e1699b520cfa71ba04/apps/frontend/src/lib/toast.ts#L18)
+Defined in: [apps/frontend/src/lib/toast.ts:18](https://github.com/LifelagCheats/prescript.daily/blob/413cc90986f7cd6bccab3fc70836e8018dd04563/apps/frontend/src/lib/toast.ts#L18)
 
 Defines the type of a function that wants to listen for toast updates
 
@@ -289,7 +303,7 @@ Listeners will be stored in a list which will enumerate them all
 
 > `const` **toast**: [`Toast`](#toast)
 
-Defined in: [apps/frontend/src/lib/toast.ts:157](https://github.com/LifelagCheats/prescript.daily/blob/023c59a78a0e096580ab52e1699b520cfa71ba04/apps/frontend/src/lib/toast.ts#L157)
+Defined in: [apps/frontend/src/lib/toast.ts:166](https://github.com/LifelagCheats/prescript.daily/blob/413cc90986f7cd6bccab3fc70836e8018dd04563/apps/frontend/src/lib/toast.ts#L166)
 
 The shared toast manager instance that can be used throughout the application
 

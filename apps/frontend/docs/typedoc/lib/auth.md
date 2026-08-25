@@ -4,7 +4,7 @@
 
 ### LoginError
 
-Defined in: [apps/frontend/src/lib/auth.ts:12](https://github.com/LifelagCheats/prescript.daily/blob/023c59a78a0e096580ab52e1699b520cfa71ba04/apps/frontend/src/lib/auth.ts#L12)
+Defined in: [apps/frontend/src/lib/auth.ts:12](https://github.com/LifelagCheats/prescript.daily/blob/413cc90986f7cd6bccab3fc70836e8018dd04563/apps/frontend/src/lib/auth.ts#L12)
 
 LoginError represents an authentication error.
 
@@ -21,7 +21,7 @@ other application errors.
 
 > **new LoginError**(`message`): [`LoginError`](#loginerror)
 
-Defined in: [apps/frontend/src/lib/auth.ts:18](https://github.com/LifelagCheats/prescript.daily/blob/023c59a78a0e096580ab52e1699b520cfa71ba04/apps/frontend/src/lib/auth.ts#L18)
+Defined in: [apps/frontend/src/lib/auth.ts:18](https://github.com/LifelagCheats/prescript.daily/blob/413cc90986f7cd6bccab3fc70836e8018dd04563/apps/frontend/src/lib/auth.ts#L18)
 
 Creates a new LoginError.
 
@@ -448,7 +448,7 @@ Indicates whether the argument provided is a built-in Error instance or not.
 
 > `const` **Authenticator**: `object`
 
-Defined in: [apps/frontend/src/lib/auth.ts:87](https://github.com/LifelagCheats/prescript.daily/blob/023c59a78a0e096580ab52e1699b520cfa71ba04/apps/frontend/src/lib/auth.ts#L87)
+Defined in: [apps/frontend/src/lib/auth.ts:87](https://github.com/LifelagCheats/prescript.daily/blob/413cc90986f7cd6bccab3fc70836e8018dd04563/apps/frontend/src/lib/auth.ts#L87)
 
 Authenticator is the API with which one interacts to authenticate the user.
 
@@ -488,7 +488,7 @@ const session = Authenticator.login('email@example.com', 'password')
 </td>
 <td>
 
-[apps/frontend/src/lib/auth.ts:100](https://github.com/LifelagCheats/prescript.daily/blob/023c59a78a0e096580ab52e1699b520cfa71ba04/apps/frontend/src/lib/auth.ts#L100)
+[apps/frontend/src/lib/auth.ts:100](https://github.com/LifelagCheats/prescript.daily/blob/413cc90986f7cd6bccab3fc70836e8018dd04563/apps/frontend/src/lib/auth.ts#L100)
 
 </td>
 </tr>
@@ -516,7 +516,7 @@ const newUser = await Authenticator.signUp('67onamerrychristmas', 'johnkaisen@em
 </td>
 <td>
 
-[apps/frontend/src/lib/auth.ts:117](https://github.com/LifelagCheats/prescript.daily/blob/023c59a78a0e096580ab52e1699b520cfa71ba04/apps/frontend/src/lib/auth.ts#L117)
+[apps/frontend/src/lib/auth.ts:117](https://github.com/LifelagCheats/prescript.daily/blob/413cc90986f7cd6bccab3fc70836e8018dd04563/apps/frontend/src/lib/auth.ts#L117)
 
 </td>
 </tr>
