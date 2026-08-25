@@ -59,7 +59,7 @@ jobs:
           cp -r apps/frontend/templates/index.html dist/
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: dist
 
