@@ -91,6 +91,15 @@ export class Toast {
   }
 
   /**
+   * Returns the list of active toasts and the list of subscribed listeners
+   *
+   * @returns the list of active toasts and the list of subscribed listeners
+   */
+  public emit() {
+    return (this.items, this.listeners);
+  }
+
+  /**
    * Deletes a toast and then updates all listeners.
    *
    * @remarks
