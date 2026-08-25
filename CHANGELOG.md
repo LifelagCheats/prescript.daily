@@ -1,3 +1,9 @@
+# [1.4.0](https://github.com/LifelagCheats/prescript.daily/compare/v1.3.2...v1.4.0) (2026-08-25)
+
+### Features
+
+- **ui:** update UI structure to make support for the new responsive design architecture ([c499f14](https://github.com/LifelagCheats/prescript.daily/commit/c499f1459bf9eb0f3daa2e7e6971d3723decfae3))
+
 ## [1.3.2](https://github.com/LifelagCheats/prescript.daily/compare/v1.3.1...v1.3.2) (2026-08-24)
 
 ### Bug Fixes
