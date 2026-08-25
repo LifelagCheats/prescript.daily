@@ -21,24 +21,26 @@ $ring-focus: #3b82f6;
 
 $breakpoint-md: 768px;
 
+#form-wrapper {
+  position: relative;
+}
+
 .FormBox {
   background: #0f1010;
   font-family: firacode;
   position: absolute;
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  right: 15rem;
+  align-items: center;
+  justify-content: center;
+  right: 7rem;
   transform: translateX(50%);
 
   color: #d9dbda;
 
   width: 0;
   min-width: 0;
-  height: 20.9rem;
-  min-height: 20.9rem;
-
-  bottom: 5rem;
+  height: clamp(10rem, 50vw, 23rem);
+  bottom: clamp(1rem, 10vh, 15rem);
 
   padding: 0rem;
 
@@ -50,8 +52,8 @@ $breakpoint-md: 768px;
   overflow: hidden;
 
   &.open {
-    width: 18rem;
-    padding: 2rem;
+    width: clamp(18rem, 90vw, 22rem);
+    padding: clamp(0.8rem, 10vw, 1rem);
   }
 }
 
@@ -155,5 +157,17 @@ label {
 
   &.show {
     opacity: 0;
+  }
+}
+
+@media (max-height: 1290px) {
+  .FormBox {
+    top: 0rem;
+    left: clamp(0rem, 20vw, 50rem);
+
+    &.open {
+      width: 20rem;
+      padding: clamp(0.8rem, 10vw, 1rem);
+    }
   }
 }

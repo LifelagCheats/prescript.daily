@@ -4,15 +4,13 @@
 
 .InfoBox {
   @include defaults.flex;
-
   position: absolute;
   width: 18rem;
-  height: 45rem;
-
+  height: 20rem;
   box-sizing: border-box;
+  container-type: inline-size;
   padding: 2rem;
   gap: 2rem;
-
   right: 80%;
 }
 
@@ -42,4 +40,14 @@
 
   width: min-content;
   padding: 1rem;
+}
+
+@media (max-width: 1350px) {
+  .InfoBox {
+    width: clamp(14rem, 90vw, 18rem);
+    right: auto;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }

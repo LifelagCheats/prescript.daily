@@ -26,3 +26,12 @@
   cursor: pointer;
   user-select: none;
 }
+
+@media (max-width: 1350px) {
+  .CompleteButton {
+    font-size: clamp(2rem, 2.5vw, 8rem);
+  }
+  .FailButton {
+    font-size: clamp(2rem, 2.5vw, 8rem);
+  }
+}

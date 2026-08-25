@@ -10,9 +10,9 @@ import Fail from '@components/react/failButton.tsx'
 import Form from '@components/react/tabs.tsx'
 import Toast from '@components/react/toast.tsx'
 
-import '@styles/sass/main.scss'
-import '@styles/sass/infobox.scss'
-import '@styles/sass/result.scss'
+import '@styles/sass/main.scss';
+import '@styles/sass/infobox.scss';
+import '@styles/sass/result.scss';
 import "@radix-ui/themes/styles.css";
 
 import { createServerClient } from "@lib/supabase";
@@ -59,9 +59,11 @@ if (user) {
   <FadeIn client:only="react">
     <Toast messages={[toastMessage1, toastMessage2]} client:load />
     {!user && (
+    <div class="wrapper" id="form-wrapper">
       <div class="FormBox" id="FormBox">
         <Form client:only="react" />
-      </div>
+      </div>      
+    </div>
     )}
     {user && (
       <div class="InfoBox" id="InfoBox">
