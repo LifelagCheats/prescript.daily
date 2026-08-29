@@ -38,11 +38,11 @@ if (user) {
 
 let toastMessage1 = null;
 let toastMessage2 = null;
-console.log(raw?.rank);
 const streakCount = raw?.streak ?? 0;
 const Pcompleted = raw?.prescripts_completed ?? 0;
+const rank: string = raw?.rank;
 const role: Rank = getRole(Pcompleted) ?? { name: 'Proselyte', Pcompleted: 0 };
-const objective: Rank = nextRole(role.name) ?? { name: 'Proxy', Pcompleted: 25};
+const objective: Rank = nextRole(rank) ?? { name: 'Proxy', Pcompleted: 25};
 
 if (user) {
   toastMessage1 = `Welcome back, ${role.name} ${user.user_metadata.username}`;
@@ -75,7 +75,7 @@ if (user) {
             floor={role.Pcompleted}
             progress={Pcompleted} 
             ceiling={objective.Pcompleted} 
-            header={role.name}
+            header={rank}
             extra={Pcompleted}
             client:load 
           />
