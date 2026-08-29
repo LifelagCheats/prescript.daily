@@ -39,6 +39,14 @@ begin
       );
   end if;
 
+  profile_row.rank :=
+    case profile_row.rank
+      when 'Proselyte' then 'Proxy'::'Rank'
+      when 'Proxy' then 'Messenger'::'Rank'
+      when 'Messenger' then 'Weaver'::'Rank'
+      when 'Weaver' then 'Weaver'::'Rank'
+    end
+
   if profile_row.last_claim_at is null then
     new_streak := 1;
 
@@ -87,7 +95,8 @@ begin
     prescripts_completed = profile_row.prescripts_completed,
     paper_slips = profile_row.paper_slips,
     streak = new_streak,
-    last_claim_at = now()
+    last_claim_at = now(),
+    rank = profile_row.rank
   where user_id = uid;
 
   return query
