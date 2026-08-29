@@ -40,11 +40,11 @@ begin
   end if;
 
   profile_row.rank :=
-    case profile_row.rank
-      when 'Proselyte' then 'Proxy'::"Rank"
-      when 'Proxy' then 'Messenger'::"Rank"
-      when 'Messenger' then 'Weaver'::"Rank"
-      when 'Weaver' then 'Weaver'::"Rank"
+    case
+      when profile_row.rank = 'Proselyte' and profile_row.prescripts_completed > 25 then 'Proxy'::"Rank"
+      when profile_row.rank = 'Proxy' and profile_row.prescripts_completed > 65 then 'Messenger'::"Rank"
+      when profile_row.rank = 'Messenger' and profile_row.prescripts_completed > 115 then 'Weaver'::"Rank"
+      else profile_row.rank
     end;
 
   if profile_row.last_claim_at is null then

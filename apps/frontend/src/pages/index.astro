@@ -29,7 +29,7 @@ let raw = null;
 if (user) {
   const result = await supabase
   .from("profiles")
-  .select("id, user_id, streak, prescripts_completed")
+  .select("id, user_id, rank, streak, prescripts_completed")
   .eq("user_id", user?.id)
     .single();
 
@@ -38,7 +38,7 @@ if (user) {
 
 let toastMessage1 = null;
 let toastMessage2 = null;
-
+console.log(raw?.rank);
 const streakCount = raw?.streak ?? 0;
 const Pcompleted = raw?.prescripts_completed ?? 0;
 const role: Rank = getRole(Pcompleted) ?? { name: 'Proselyte', Pcompleted: 0 };
