@@ -41,11 +41,11 @@ begin
 
   profile_row.rank :=
     case profile_row.rank
-      when 'Proselyte' then 'Proxy'::'Rank'
-      when 'Proxy' then 'Messenger'::'Rank'
-      when 'Messenger' then 'Weaver'::'Rank'
-      when 'Weaver' then 'Weaver'::'Rank'
-    end
+      when 'Proselyte' then 'Proxy'::"Rank"
+      when 'Proxy' then 'Messenger'::"Rank"
+      when 'Messenger' then 'Weaver'::"Rank"
+      when 'Weaver' then 'Weaver'::"Rank"
+    end;
 
   if profile_row.last_claim_at is null then
     new_streak := 1;
