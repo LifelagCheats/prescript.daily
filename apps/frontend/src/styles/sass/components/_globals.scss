@@ -1,6 +1,6 @@
-@mixin glow($color: #4269b8, $size: 1.4375rem, $glow: true) {
+@mixin glow($color: #4269b8, $size: 1.4375rem, $glow: true, $font: pixelmplus12regular) {
   color: white;
-  font-family: pixelmplus12regular;
+  font-family: $font;
   font-size: clamp(0.875rem, 2.5vw, $size);
   @if $glow {
     text-shadow:
@@ -8,4 +8,10 @@
       0 0 12px $color,
       0 0 50px $color;
   }
+}
+
+@mixin boxglow($color: #4269b8) {
+  box-shadow:
+    0 0 0.2px #ffffff,
+    0 0 12px $color;
 }
