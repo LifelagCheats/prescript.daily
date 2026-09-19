@@ -1,0 +1,93 @@
+@use '@/styles/sass/components/globals';
+@use '@/styles/sass/components/defaults';
+
+.leaderboard {
+  @include defaults.flex($direction: column, $justify-content: flex-start);
+
+  position: absolute;
+  background: #141419;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: clamp(10rem, 22vw, 20rem);
+  height: clamp(10rem, 30vw, 30rem);
+  right: 3rem;
+  bottom: 2rem;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  padding-bottom: 5rem;
+}
+
+.statistics {
+  @include globals.glow($font: firacode, $size: 1rem);
+
+  position: sticky;
+  margin: 1rem;
+}
+
+.date {
+  @include globals.glow($size: 1rem);
+  position: sticky;
+}
+
+.userlist {
+  display: grid;
+  grid: repeat(1, 60px);
+  gap: 1rem;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: 1fr auto;
+
+  width: 300px;
+  height: 50px;
+  padding: 0.4rem;
+
+  color: white;
+  font-family: firacode;
+  border-radius: 0.5rem;
+  background: #212228;
+  opacity: 0;
+  transform: translateY(+25%);
+  transition:
+    opacity 0.3s ease,
+    transform 0.2s ease-in;
+
+  &.show {
+    opacity: 1;
+    transform: translateY(+50%);
+  }
+}
+
+.username {
+  max-width: 9rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  grid-column: 1;
+  grid-row: 1;
+
+  justify-self: start;
+  align-self: start;
+}
+
+.stat {
+  @include globals.glow($size: 1.2rem, $font: firacode);
+
+  grid-column: 1 / 3;
+  grid-row: 2;
+
+  justify-self: center;
+  align-self: end;
+}
+
+.rank {
+  grid-column: 2;
+  grid-row: 1;
+
+  justify-self: end;
+  align-self: start;
+
+  opacity: 0.4;
+}
