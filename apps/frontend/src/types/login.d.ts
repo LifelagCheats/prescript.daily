@@ -14,3 +14,19 @@
  * ```
  */
 export type Email = `${string}@${string}.${string}`;
+
+/**
+ * Represents any kind of usable user data
+ *
+ * @noInheritDoc
+ */
+export interface User extends object {
+  id: number;
+  username: string;
+  rank: 'Proselyte' | 'Proxy' | 'Messenger' | 'Weaver';
+  streak: number;
+  prescripts_completed: number;
+  paper_slips: number[];
+  prescripts_failed: number;
+  encountered: number[];
+}

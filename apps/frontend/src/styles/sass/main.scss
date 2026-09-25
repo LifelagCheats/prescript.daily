@@ -80,3 +80,21 @@ body {
   max-width: 100%;
   overflow-wrap: break-word;
 }
+
+// chromium scrollbar
+::-webkit-scrollbar {
+  background-color: transparent;
+  width: 0.4rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4269b8;
+  border-radius: 1rem;
+}
+
+// firefox
+
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #4269b8 transparent;
+}

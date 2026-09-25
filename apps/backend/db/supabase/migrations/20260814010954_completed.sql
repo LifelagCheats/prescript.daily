@@ -24,11 +24,9 @@ begin
     raise exception 'profile not found';
   end if;
 
-  -- Count the completed prescript
   profile_row.prescripts_completed :=
     profile_row.prescripts_completed + 1;
 
-  -- Add it to paper_slips if it isn't already there
   if not (
     prescript::bigint = any(
       coalesce(profile_row.paper_slips, '{}'::bigint[])
@@ -41,7 +39,14 @@ begin
       );
   end if;
 
-  -- First streak claim
+  profile_row.rank :=
+    case
+      when profile_row.rank = 'Proselyte' and profile_row.prescripts_completed >= 25 then 'Proxy'::"Rank"
+      when profile_row.rank = 'Proxy' and profile_row.prescripts_completed >= 65 then 'Messenger'::"Rank"
+      when profile_row.rank = 'Messenger' and profile_row.prescripts_completed >= 115 then 'Weaver'::"Rank"
+      else profile_row.rank
+    end;
+
   if profile_row.last_claim_at is null then
     new_streak := 1;
 
@@ -50,7 +55,8 @@ begin
       prescripts_completed = profile_row.prescripts_completed,
       paper_slips = profile_row.paper_slips,
       streak = new_streak,
-      last_claim_at = now()
+      last_claim_at = now(),
+      rank = profile_row.rank
     where user_id = uid;
 
     return query
@@ -62,13 +68,13 @@ begin
   seconds_since_claim :=
     extract(epoch from (now() - profile_row.last_claim_at));
 
-  -- Still on cooldown
   if seconds_since_claim < 24 * 60 * 60 then
 
     update public.profiles
     set
       prescripts_completed = profile_row.prescripts_completed,
-      paper_slips = profile_row.paper_slips
+      paper_slips = profile_row.paper_slips,
+      rank = profile_row.rank
     where user_id = uid;
 
     return query
@@ -80,7 +86,6 @@ begin
     return;
   end if;
 
-  -- Continue or reset streak
   if seconds_since_claim <= 48 * 60 * 60 then
     new_streak := profile_row.streak + 1;
   else
@@ -92,7 +97,8 @@ begin
     prescripts_completed = profile_row.prescripts_completed,
     paper_slips = profile_row.paper_slips,
     streak = new_streak,
-    last_claim_at = now()
+    last_claim_at = now(),
+    rank = profile_row.rank
   where user_id = uid;
 
   return query

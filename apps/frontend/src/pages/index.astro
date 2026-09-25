@@ -9,6 +9,7 @@ import Complete from '@components/react/completeButton.tsx'
 import Fail from '@components/react/failButton.tsx'
 import Form from '@components/react/tabs.tsx'
 import Toast from '@components/react/toast.tsx'
+import Leaderboard from "@components/react/leaderboard";
 
 import '@styles/sass/main.scss';
 import '@styles/sass/infobox.scss';
@@ -18,6 +19,7 @@ import "@radix-ui/themes/styles.css";
 import { createServerClient } from "@lib/supabase";
 import { getRole, nextRole } from '@lib/roles'
 import type { Rank } from "@/types/rank";
+import type { User } from "@/types/login";
 
 const supabase = createServerClient({
   request: Astro.request,
@@ -29,20 +31,26 @@ let raw = null;
 if (user) {
   const result = await supabase
   .from("profiles")
-  .select("id, user_id, streak, prescripts_completed")
+  .select("id, user_id, rank, streak, prescripts_completed")
   .eq("user_id", user?.id)
     .single();
 
   raw = result.data;
 }
 
+const leaderboard = await supabase
+  .from('profiles')
+  .select('id, username, rank, streak, prescripts_completed, paper_slips, prescripts_failed, encountered')
+  .order('prescripts_completed', { ascending: false })
+  .limit(100);
+
 let toastMessage1 = null;
 let toastMessage2 = null;
-
 const streakCount = raw?.streak ?? 0;
 const Pcompleted = raw?.prescripts_completed ?? 0;
+const rank: string = raw?.rank;
 const role: Rank = getRole(Pcompleted) ?? { name: 'Proselyte', Pcompleted: 0 };
-const objective: Rank = nextRole(role.name) ?? { name: 'Proxy', Pcompleted: 25};
+const objective: Rank = nextRole(rank) ?? { name: 'Proxy', Pcompleted: 25};
 
 if (user) {
   toastMessage1 = `Welcome back, ${role.name} ${user.user_metadata.username}`;
@@ -66,6 +74,7 @@ if (user) {
     </div>
     )}
     {user && (
+      <Leaderboard client:only="react" users={leaderboard.data} statType="Prescripts Completed"/>
       <div class="InfoBox" id="InfoBox">
         <div class="UserInfo" id="UserInfo">
           <div class="StreakBox" id="StreakBox">
@@ -75,7 +84,7 @@ if (user) {
             floor={role.Pcompleted}
             progress={Pcompleted} 
             ceiling={objective.Pcompleted} 
-            header={role.name}
+            header={rank}
             extra={Pcompleted}
             client:load 
           />
